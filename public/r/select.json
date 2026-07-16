@@ -7,8 +7,8 @@
     "radix-ui"
   ],
   "registryDependencies": [
-    "https://aogusto.github.io/arui/r/theme.json",
-    "https://aogusto.github.io/arui/r/glass-surface.json"
+    "https://arui.vercel.app/r/theme.json",
+    "https://arui.vercel.app/r/glass-surface.json"
   ],
   "files": [
     {

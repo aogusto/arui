@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "arui",
-  "homepage": "https://aogusto.github.io/arui",
+  "homepage": "https://arui.vercel.app",
   "items": [
     {
       "name": "theme",
@@ -20,7 +20,7 @@
       "type": "registry:ui",
       "title": "GlassSurface",
       "description": "Superfície frosted (assinatura Arui).",
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/glass-surface.tsx", "type": "registry:ui" }]
     },
     {
@@ -28,21 +28,21 @@
       "type": "registry:ui",
       "title": "Button",
       "dependencies": ["class-variance-authority", "radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/button.tsx", "type": "registry:ui" }]
     },
     {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/card.tsx", "type": "registry:ui" }]
     },
     {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/input.tsx", "type": "registry:ui" }]
     },
     {
@@ -50,7 +50,7 @@
       "type": "registry:ui",
       "title": "Label",
       "dependencies": ["radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/label.tsx", "type": "registry:ui" }]
     },
     {
@@ -58,14 +58,14 @@
       "type": "registry:ui",
       "title": "Badge",
       "dependencies": ["class-variance-authority", "radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/badge.tsx", "type": "registry:ui" }]
     },
     {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/skeleton.tsx", "type": "registry:ui" }]
     },
     {
@@ -73,7 +73,7 @@
       "type": "registry:ui",
       "title": "Tabs",
       "dependencies": ["class-variance-authority", "radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
       "files": [{ "path": "registry/arui/components/ui/tabs.tsx", "type": "registry:ui" }]
     },
     {
@@ -81,7 +81,7 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "dependencies": ["radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json", "https://aogusto.github.io/arui/r/glass-surface.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json"],
       "files": [{ "path": "registry/arui/components/ui/tooltip.tsx", "type": "registry:ui" }]
     },
     {
@@ -89,7 +89,7 @@
       "type": "registry:ui",
       "title": "Select",
       "dependencies": ["lucide-react", "radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json", "https://aogusto.github.io/arui/r/glass-surface.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json"],
       "files": [{ "path": "registry/arui/components/ui/select.tsx", "type": "registry:ui" }]
     },
     {
@@ -97,7 +97,7 @@
       "type": "registry:ui",
       "title": "Dialog",
       "dependencies": ["lucide-react", "radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json", "https://aogusto.github.io/arui/r/glass-surface.json", "https://aogusto.github.io/arui/r/button.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json", "https://arui.vercel.app/r/button.json"],
       "files": [{ "path": "registry/arui/components/ui/dialog.tsx", "type": "registry:ui" }]
     },
     {
@@ -105,7 +105,7 @@
       "type": "registry:ui",
       "title": "Sheet",
       "dependencies": ["lucide-react", "radix-ui"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json", "https://aogusto.github.io/arui/r/glass-surface.json", "https://aogusto.github.io/arui/r/button.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json", "https://arui.vercel.app/r/button.json"],
       "files": [{ "path": "registry/arui/components/ui/sheet.tsx", "type": "registry:ui" }]
     },
     {
@@ -113,7 +113,7 @@
       "type": "registry:ui",
       "title": "Form",
       "dependencies": ["radix-ui", "react-hook-form", "zod", "@hookform/resolvers"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json", "https://aogusto.github.io/arui/r/label.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/label.json"],
       "files": [{ "path": "registry/arui/components/ui/form.tsx", "type": "registry:ui" }]
     },
     {
@@ -121,7 +121,7 @@
       "type": "registry:ui",
       "title": "Toaster",
       "dependencies": ["sonner", "next-themes", "lucide-react"],
-      "registryDependencies": ["https://aogusto.github.io/arui/r/theme.json", "https://aogusto.github.io/arui/r/glass-surface.json"],
+      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json"],
       "files": [{ "path": "registry/arui/components/ui/sonner.tsx", "type": "registry:ui" }]
     }
   ]

@@ -9,8 +9,8 @@
     "@hookform/resolvers"
   ],
   "registryDependencies": [
-    "https://aogusto.github.io/arui/r/theme.json",
-    "https://aogusto.github.io/arui/r/label.json"
+    "https://arui.vercel.app/r/theme.json",
+    "https://arui.vercel.app/r/label.json"
   ],
   "files": [
     {

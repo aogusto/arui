@@ -54,21 +54,21 @@ Composed items pull their dependencies automatically. `dialog`, for example, res
 
 ## Installing
 
-The registry is hosted on GitHub Pages at **`https://aogusto.github.io/arui`**, so consumers
-install straight from that origin — `https://aogusto.github.io/arui/r/<item>.json`. (For a
+The registry is hosted on GitHub Pages at **`https://arui.vercel.app`**, so consumers
+install straight from that origin — `https://arui.vercel.app/r/<item>.json`. (For a
 local copy of the registry, see "Serving the registry locally" below and swap the origin for
 `http://localhost:4173`.)
 
 **1. Install the theme foundation first** (it carries `cn()`, `use-mobile`, and every token):
 
 ```bash
-npx shadcn@latest add https://aogusto.github.io/arui/r/theme.json
+npx shadcn@latest add https://arui.vercel.app/r/theme.json
 ```
 
 **2. Then add the components you need:**
 
 ```bash
-npx shadcn@latest add https://aogusto.github.io/arui/r/button.json https://aogusto.github.io/arui/r/dialog.json
+npx shadcn@latest add https://arui.vercel.app/r/button.json https://arui.vercel.app/r/dialog.json
 ```
 
 **3. Wire the stylesheet imports**, in the CSS entry that already imports Tailwind. Order
@@ -200,8 +200,8 @@ import in `src/index.css` (the CLI drops the file at `src/styles/arui.css` but d
 the import for you):
 
 ```bash
-npx shadcn@latest add https://aogusto.github.io/arui/r/theme.json
-npx shadcn@latest add https://aogusto.github.io/arui/r/button.json https://aogusto.github.io/arui/r/dialog.json
+npx shadcn@latest add https://arui.vercel.app/r/theme.json
+npx shadcn@latest add https://arui.vercel.app/r/button.json https://arui.vercel.app/r/dialog.json
 ```
 
 `src/index.css` now carries all four imports, in this order:
@@ -250,10 +250,10 @@ The `form` item is a thin, accessible wrapper over `react-hook-form`. Pair it wi
 
 ```bash
 npx shadcn@latest add \
-  https://aogusto.github.io/arui/r/form.json \
-  https://aogusto.github.io/arui/r/input.json \
-  https://aogusto.github.io/arui/r/label.json \
-  https://aogusto.github.io/arui/r/button.json
+  https://arui.vercel.app/r/form.json \
+  https://arui.vercel.app/r/input.json \
+  https://arui.vercel.app/r/label.json \
+  https://arui.vercel.app/r/button.json
 npm install react-hook-form @hookform/resolvers zod
 ```
 
@@ -343,11 +343,11 @@ light and dark themes.
 
 ## Hosting
 
-The live registry is hosted on **GitHub Pages** at `https://aogusto.github.io/arui`. Consumers
+The live registry is hosted on **GitHub Pages** at `https://arui.vercel.app`. Consumers
 install from there:
 
 ```bash
-npx shadcn@latest add https://aogusto.github.io/arui/r/<item>.json
+npx shadcn@latest add https://arui.vercel.app/r/<item>.json
 ```
 
 Deployment is automated: `.github/workflows/deploy-pages.yml` runs on every push to `master`,
@@ -363,12 +363,12 @@ served under the `/arui/` subpath — `vite.config.ts` sets `base: "/arui/"` for
 ### Changing the base URL
 
 The base URL is **baked into the generated JSON as absolute URLs**, not resolved at request
-time. `registry.json` uses `https://aogusto.github.io/arui` for `homepage` and inside every
+time. `registry.json` uses `https://arui.vercel.app` for `homepage` and inside every
 `registryDependencies` entry (e.g. `dialog` depends on
-`https://aogusto.github.io/arui/r/theme.json`), and `shadcn build` copies those absolute URLs
+`https://arui.vercel.app/r/theme.json`), and `shadcn build` copies those absolute URLs
 verbatim into each `public/r/*.json`. To host under a different origin:
 
-1. In `registry.json`, replace `https://aogusto.github.io/arui` with the new base URL — in
+1. In `registry.json`, replace `https://arui.vercel.app` with the new base URL — in
    `homepage` **and** in every `registryDependencies` URL across all items.
 2. Re-run `npm run registry:build` so the regenerated `public/r/*.json` carry the new
    absolute URLs.

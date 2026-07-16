@@ -3,7 +3,7 @@
   "name": "card",
   "title": "Card",
   "registryDependencies": [
-    "https://aogusto.github.io/arui/r/theme.json"
+    "https://arui.vercel.app/r/theme.json"
   ],
   "files": [
     {
