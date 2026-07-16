@@ -1,3 +1,6 @@
+import { z } from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { cn } from "@/lib/utils"
 import { GlassSurface } from "@/components/ui/glass-surface"
 import { Button } from "@/components/ui/button"
@@ -43,6 +46,54 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+} from "@/components/ui/form"
+
+const profileFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters."),
+})
+
+type ProfileFormValues = z.infer<typeof profileFormSchema>
+
+function ProfileForm() {
+  const form = useForm<ProfileFormValues>({
+    resolver: zodResolver(profileFormSchema),
+    defaultValues: { name: "" },
+  })
+
+  const onSubmit = form.handleSubmit((values) => {
+    toast.success(`Saved ${values.name}`)
+  })
+
+  return (
+    <Form {...form}>
+      <form onSubmit={onSubmit} className="max-w-sm space-y-4">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Jane Appleseed" {...field} />
+              </FormControl>
+              <FormDescription>Your public display name.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
+  )
+}
 
 function ThemeToggle() {
   return (
@@ -175,6 +226,11 @@ export default function App() {
             </Sheet>
           </div>
         </TooltipProvider>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-title-2 text-label">Form</h2>
+        <ProfileForm />
       </section>
     </div>
   )

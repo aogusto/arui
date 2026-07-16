@@ -8,7 +8,7 @@
       "type": "registry:style",
       "title": "Arui theme (Apple HIG)",
       "description": "Tokens HIG, cn() e use-mobile — fundação da Arui.",
-      "dependencies": ["tailwind-merge", "clsx", "class-variance-authority", "tw-animate-css"],
+      "dependencies": ["tailwind-merge", "clsx", "class-variance-authority", "tw-animate-css", "@fontsource-variable/inter"],
       "files": [
         { "path": "registry/arui/lib/utils.ts", "type": "registry:lib", "target": "lib/utils.ts" },
         { "path": "registry/arui/hooks/use-mobile.ts", "type": "registry:hook", "target": "hooks/use-mobile.ts" },

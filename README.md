@@ -70,16 +70,27 @@ npx shadcn@latest add http://localhost:4173/r/theme.json
 npx shadcn@latest add http://localhost:4173/r/button.json http://localhost:4173/r/dialog.json
 ```
 
-**3. Import the token stylesheet once**, in the CSS entry that already imports Tailwind:
+**3. Wire the stylesheet imports**, in the CSS entry that already imports Tailwind. Order
+matters, and all four lines are required:
 
 ```css
 /* src/index.css */
 @import "tailwindcss";
-@import "./styles/arui.css";
+@import "tw-animate-css";          /* animate-in / fade-in / zoom-in used by the overlays */
+@import "@fontsource-variable/inter"; /* the Inter Variable face --font-sans points at */
+@import "./styles/arui.css";       /* the Arui HIG tokens (must come last) */
 ```
 
+`tw-animate-css` and `@fontsource-variable/inter` are declared as npm `dependencies` of the
+`theme` item, so `shadcn add theme.json` installs the packages for you — but the CLI does
+**not** add the `@import` lines above; do that by hand. Without `tw-animate-css` the dialog/
+sheet/select/tooltip open with no transition; without the Inter face `--font-sans` falls back
+to the system sans-serif.
+
 That's it — components render with the full HIG look (Inter type scale, HIG accent colors,
-pill radii, frosted-glass overlays) with no per-component configuration.
+pill radii, frosted-glass overlays) with no per-component configuration. You do **not** need
+`shadcn`'s own `tailwind.css`/base-color stylesheet: Tailwind v4 + `tw-animate-css` +
+`@fontsource-variable/inter` + `arui.css` are fully self-sufficient for the Arui look.
 
 ## Consumer setup (validated end-to-end)
 
@@ -92,6 +103,9 @@ registry:
 npm create vite@latest my-app -- --template react-ts
 cd my-app && npm install
 npm install tailwindcss @tailwindcss/vite
+# animation utilities + the Inter Variable face the tokens expect
+# (shadcn also installs these when you add theme.json — listing them here makes the setup explicit)
+npm install tw-animate-css @fontsource-variable/inter
 ```
 
 **2. Add the Tailwind v4 plugin and the `@` alias** in `vite.config.ts`:
@@ -110,10 +124,35 @@ export default defineConfig({
 })
 ```
 
-**3. Teach TypeScript the alias** in `tsconfig.app.json` (`moduleResolution: "bundler"`
-resolves `paths` without `baseUrl`):
+**3. Teach the alias to _both_ the `shadcn` CLI and TypeScript — this must go in the root
+`tsconfig.json`.** The CLI reads the **root `tsconfig.json`** (not `tsconfig.app.json`) to
+resolve `@/*` and decide where to write files. The Vite `react-ts` scaffold ships a root
+`tsconfig.json` that contains only `files`/`references` and **no `compilerOptions`**, so
+without this step the CLI can't expand `@/*`, writes components into a literal
+`./@/components/ui/` folder, and every `@/…` import fails to resolve (`TS2307` — `tsc -b`
+and `npm run build` exit with code 2). Add a `compilerOptions` block with `baseUrl` and
+`paths`, keeping the existing `files`/`references`:
 
 ```jsonc
+// tsconfig.json (root) — add compilerOptions, keep files/references
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] }
+  }
+}
+```
+
+Mirror the same `paths` in `tsconfig.app.json` too (that's the project `tsc -b` actually
+compiles, and it gives your editor resolution inside app code):
+
+```jsonc
+// tsconfig.app.json
 {
   "compilerOptions": {
     // …existing options…
@@ -122,11 +161,13 @@ resolves `paths` without `baseUrl`):
 }
 ```
 
-**4. Create `src/index.css`** with the Tailwind import (the token import is added after the
-theme is installed):
+**4. Create `src/index.css`** with the Tailwind, animation, and font imports (the Arui token
+import is added last, after the theme is installed — step 6):
 
 ```css
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/inter";
 ```
 
 **5. Add a minimal `components.json`** so the CLI knows where to place files:
@@ -153,12 +194,22 @@ theme is installed):
 }
 ```
 
-**6. Install theme + components**, then add `@import "./styles/arui.css";` to `src/index.css`
-(the CLI drops the file at `src/styles/arui.css` but does not add the import for you):
+**6. Install theme + components**, then add `@import "./styles/arui.css";` as the **last**
+import in `src/index.css` (the CLI drops the file at `src/styles/arui.css` but does not add
+the import for you):
 
 ```bash
 npx shadcn@latest add http://localhost:4173/r/theme.json
 npx shadcn@latest add http://localhost:4173/r/button.json http://localhost:4173/r/dialog.json
+```
+
+`src/index.css` now carries all four imports, in this order:
+
+```css
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/inter";
+@import "./styles/arui.css";
 ```
 
 **7. Use the components:**
@@ -288,6 +339,26 @@ curl -s http://localhost:4173/r/theme.json | head
 
 The preview app (`npm run dev`) renders a gallery of every component for visual review in
 light and dark themes.
+
+## Hosting on a real origin
+
+The base URL is **baked into the generated JSON as absolute URLs**, not resolved at request
+time. `registry.json` uses `http://localhost:4173` for `homepage` and inside every
+`registryDependencies` entry (e.g. `dialog` depends on
+`http://localhost:4173/r/theme.json`), and `shadcn build` copies those absolute URLs verbatim
+into each `public/r/*.json`. This is fine for local development, but it means a transitive
+install (`add dialog.json`, which pulls `theme` + `glass-surface` + `button`) will keep
+reaching for `localhost:4173` even after you deploy elsewhere.
+
+Before publishing to a real origin:
+
+1. In `registry.json`, replace `http://localhost:4173` with your deployed base URL — in
+   `homepage` **and** in every `registryDependencies` URL across all items.
+2. Re-run `npm run registry:build` so the regenerated `public/r/*.json` carry the new
+   absolute URLs.
+
+(There is intentionally no env-driven URL rewriting yet — a single find-and-replace plus a
+rebuild is the v1 workflow.)
 
 ## Development
 
