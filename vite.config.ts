@@ -3,12 +3,12 @@ import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
-export default defineConfig(({ command }) => ({
-  base: command === "build" ? "/arui/" : "/",
+export default defineConfig({
+  // Vercel serve na raiz do domínio → base "/" (default). No GitHub Pages seria "/arui/".
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./registry/arui"),
     },
   },
-}))
+})
