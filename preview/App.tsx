@@ -14,6 +14,35 @@ import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip"
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet"
 
 function ThemeToggle() {
   return (
@@ -30,6 +59,7 @@ function ThemeToggle() {
 export default function App() {
   return (
     <div className="min-h-dvh bg-background p-8 space-y-4">
+      <Toaster />
       <ThemeToggle />
       <h1 className="text-large-title text-label">Arui</h1>
       <p className={cn("text-body text-label-secondary", "text-callout")}>
@@ -95,6 +125,56 @@ export default function App() {
           <TabsContent value="a">Content A</TabsContent>
           <TabsContent value="b">Content B</TabsContent>
         </Tabs>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-title-2 text-label">Overlays</h2>
+
+        <TooltipProvider>
+          <div className="flex flex-wrap gap-3">
+            <Button onClick={() => toast.success("Saved!")}>Toast</Button>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline">Hover</Button>
+              </TooltipTrigger>
+              <TooltipContent>Tooltip Arui</TooltipContent>
+            </Tooltip>
+
+            <Select>
+              <SelectTrigger className="w-40">
+                <SelectValue placeholder="Choose" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">One</SelectItem>
+                <SelectItem value="2">Two</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>Dialog</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Title</DialogTitle>
+                </DialogHeader>
+                Dialog content.
+              </DialogContent>
+            </Dialog>
+
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="secondary">Sheet</Button>
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>Panel</SheetTitle>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </TooltipProvider>
       </section>
     </div>
   )
