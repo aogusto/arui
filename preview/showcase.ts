@@ -6,7 +6,7 @@ export const SITE = {
   domain: "arui.vercel.app",
   github: "https://github.com/aogusto/arui",
   componentCount: 57, // glass-surface + 56 primitives
-  primitiveCount: 13,
+  primitiveCount: 56,
 } as const
 
 export type ShowcasePhoto = {
