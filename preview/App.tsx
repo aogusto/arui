@@ -1,237 +1,42 @@
-import { z } from "zod"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { cn } from "@/lib/utils"
-import { GlassSurface } from "@/components/ui/glass-surface"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { useEffect } from "react"
 import { Toaster } from "@/components/ui/sonner"
-import { toast } from "sonner"
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider,
-} from "@/components/ui/tooltip"
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select"
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
-import {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet"
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-} from "@/components/ui/form"
-
-const profileFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-})
-
-type ProfileFormValues = z.infer<typeof profileFormSchema>
-
-function ProfileForm() {
-  const form = useForm<ProfileFormValues>({
-    resolver: zodResolver(profileFormSchema),
-    defaultValues: { name: "" },
-  })
-
-  const onSubmit = form.handleSubmit((values) => {
-    toast.success(`Saved ${values.name}`)
-  })
-
-  return (
-    <Form {...form}>
-      <form onSubmit={onSubmit} className="max-w-sm space-y-4">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Jane Appleseed" {...field} />
-              </FormControl>
-              <FormDescription>Your public display name.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
-  )
-}
-
-function ThemeToggle() {
-  return (
-    <button
-      type="button"
-      className="fixed right-4 top-4 rounded-lg border border-separator px-3 py-1 text-footnote"
-      onClick={() => document.documentElement.classList.toggle("dark")}
-    >
-      toggle theme
-    </button>
-  )
-}
+import { useTheme } from "./lib/useTheme"
+import { Nav } from "./components/Nav"
+import { Hero } from "./components/Hero"
+import { MaterialSection } from "./components/MaterialSection"
+import { ComponentsPlayground } from "./components/ComponentsPlayground"
+import { InstallSection } from "./components/InstallSection"
+import { Footer } from "./components/Footer"
 
 export default function App() {
+  const { theme, toggle } = useTheme()
+
+  useEffect(() => {
+    document.title = "Arui — Liquid glass React components"
+  }, [])
+
   return (
-    <div className="min-h-dvh bg-background p-8 space-y-4">
+    <div className="relative min-h-dvh overflow-x-hidden bg-background text-foreground antialiased">
+      {/* Ambient accent haze — ties the sections together so the space between
+          them reads as considered rather than empty. Purely decorative. */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-0 overflow-hidden"
+      >
+        <div className="animate-login-blob-1 absolute -left-32 top-1/4 size-[38rem] rounded-full bg-indigo/10 blur-[120px]" />
+        <div className="animate-login-blob-3 absolute -right-24 top-2/3 size-[34rem] rounded-full bg-purple/10 blur-[120px]" />
+        <div className="animate-login-blob-2 absolute bottom-0 left-1/3 size-[30rem] rounded-full bg-cyan/[0.07] blur-[120px]" />
+      </div>
+
       <Toaster />
-      <ThemeToggle />
-      <h1 className="text-large-title text-label">Arui</h1>
-      <p className={cn("text-body text-label-secondary", "text-callout")}>
-        Fundação: type scale HIG + cores semânticas + cn().
-      </p>
-      <div className="flex gap-3">
-        <div className="size-16 rounded-2xl bg-fill" />
-        <div className="size-16 rounded-2xl bg-fill-secondary" />
-        <div className="size-16 rounded-2xl border border-separator shadow-glass" />
-      </div>
-
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 to-pink-500 p-8 space-y-4">
-        <GlassSurface variant="regular" className="w-64">
-          <div className="p-6 text-label">Glass regular</div>
-        </GlassSurface>
-        <GlassSurface variant="thick" className="w-64">
-          <div className="p-6 text-label">Glass thick</div>
-        </GlassSurface>
-        <GlassSurface variant="clear" dim className="w-64">
-          <div className="p-6 text-white">Glass clear (dim)</div>
-        </GlassSurface>
-      </div>
-
-      <section className="space-y-3">
-        <h2 className="text-title-2 text-label">Primitives</h2>
-
-        <div className="flex flex-wrap gap-2">
-          <Button>Default</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="destructive">Destructive</Button>
-          <Button variant="ghost">Ghost</Button>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge>Badge</Badge>
-          <Badge variant="secondary">Secondary</Badge>
-          <Badge variant="destructive">Destructive</Badge>
-          <Badge variant="outline">Outline</Badge>
-        </div>
-
-        <Card className="max-w-sm">
-          <CardHeader>
-            <CardTitle>Card title</CardTitle>
-            <CardDescription>A short supporting description.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" placeholder="Type here…" />
-          </CardContent>
-          <CardFooter>
-            <Button size="sm">Save</Button>
-          </CardFooter>
-        </Card>
-
-        <Skeleton className="h-8 w-48" />
-
-        <Tabs defaultValue="a" className="max-w-sm">
-          <TabsList>
-            <TabsTrigger value="a">A</TabsTrigger>
-            <TabsTrigger value="b">B</TabsTrigger>
-          </TabsList>
-          <TabsContent value="a">Content A</TabsContent>
-          <TabsContent value="b">Content B</TabsContent>
-        </Tabs>
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="text-title-2 text-label">Overlays</h2>
-
-        <TooltipProvider>
-          <div className="flex flex-wrap gap-3">
-            <Button onClick={() => toast.success("Saved!")}>Toast</Button>
-
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="outline">Hover</Button>
-              </TooltipTrigger>
-              <TooltipContent>Tooltip Arui</TooltipContent>
-            </Tooltip>
-
-            <Select>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Choose" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="1">One</SelectItem>
-                <SelectItem value="2">Two</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>Dialog</Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Title</DialogTitle>
-                </DialogHeader>
-                Dialog content.
-              </DialogContent>
-            </Dialog>
-
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="secondary">Sheet</Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>Panel</SheetTitle>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </TooltipProvider>
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="text-title-2 text-label">Form</h2>
-        <ProfileForm />
-      </section>
+      <Nav theme={theme} onToggleTheme={toggle} />
+      <main className="relative z-10">
+        <Hero />
+        <MaterialSection />
+        <ComponentsPlayground />
+        <InstallSection />
+      </main>
+      <Footer className="relative z-10" />
     </div>
   )
 }
