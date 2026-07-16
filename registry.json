@@ -8,11 +8,29 @@
       "type": "registry:style",
       "title": "Arui theme (Apple HIG)",
       "description": "Tokens HIG, cn() e use-mobile — fundação da Arui.",
-      "dependencies": ["tailwind-merge", "clsx", "class-variance-authority", "tw-animate-css", "@fontsource-variable/inter"],
+      "dependencies": [
+        "tailwind-merge",
+        "clsx",
+        "class-variance-authority",
+        "tw-animate-css",
+        "@fontsource-variable/inter"
+      ],
       "files": [
-        { "path": "registry/arui/lib/utils.ts", "type": "registry:lib", "target": "lib/utils.ts" },
-        { "path": "registry/arui/hooks/use-mobile.ts", "type": "registry:hook", "target": "hooks/use-mobile.ts" },
-        { "path": "registry/arui/theme/arui.css", "type": "registry:file", "target": "styles/arui.css" }
+        {
+          "path": "registry/arui/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        },
+        {
+          "path": "registry/arui/hooks/use-mobile.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-mobile.ts"
+        },
+        {
+          "path": "registry/arui/theme/arui.css",
+          "type": "registry:file",
+          "target": "styles/arui.css"
+        }
       ]
     },
     {
@@ -20,109 +38,1018 @@
       "type": "registry:ui",
       "title": "GlassSurface",
       "description": "Superfície frosted (assinatura Arui).",
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/glass-surface.tsx", "type": "registry:ui" }]
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/glass-surface.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "dependencies": ["class-variance-authority", "radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/button.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/card.tsx", "type": "registry:ui" }]
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/input.tsx", "type": "registry:ui" }]
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/label.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "dependencies": ["class-variance-authority", "radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/badge.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/skeleton.tsx", "type": "registry:ui" }]
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "dependencies": ["class-variance-authority", "radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json"],
-      "files": [{ "path": "registry/arui/components/ui/tabs.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json"],
-      "files": [{ "path": "registry/arui/components/ui/tooltip.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "dependencies": ["lucide-react", "radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json"],
-      "files": [{ "path": "registry/arui/components/ui/select.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "dependencies": ["lucide-react", "radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json", "https://arui.vercel.app/r/button.json"],
-      "files": [{ "path": "registry/arui/components/ui/dialog.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json",
+        "https://arui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "dependencies": ["lucide-react", "radix-ui"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json", "https://arui.vercel.app/r/button.json"],
-      "files": [{ "path": "registry/arui/components/ui/sheet.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json",
+        "https://arui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "form",
       "type": "registry:ui",
       "title": "Form",
-      "dependencies": ["radix-ui", "react-hook-form", "zod", "@hookform/resolvers"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/label.json"],
-      "files": [{ "path": "registry/arui/components/ui/form.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "radix-ui",
+        "react-hook-form",
+        "zod",
+        "@hookform/resolvers"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "sonner",
       "type": "registry:ui",
       "title": "Toaster",
-      "dependencies": ["sonner", "next-themes", "lucide-react"],
-      "registryDependencies": ["https://arui.vercel.app/r/theme.json", "https://arui.vercel.app/r/glass-surface.json"],
-      "files": [{ "path": "registry/arui/components/ui/sonner.tsx", "type": "registry:ui" }]
+      "dependencies": [
+        "sonner",
+        "next-themes",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/button.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "dependencies": [
+        "lucide-react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "dependencies": [
+        "embla-carousel-react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/button.json",
+        "https://arui.vercel.app/r/glass-surface.json",
+        "https://arui.vercel.app/r/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/dialog.json",
+        "https://arui.vercel.app/r/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "dependencies": [
+        "vaul"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/label.json",
+        "https://arui.vercel.app/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/button.json",
+        "https://arui.vercel.app/r/input.json",
+        "https://arui.vercel.app/r/textarea.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "dependencies": [
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/glass-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/button.json",
+        "https://arui.vercel.app/r/input.json",
+        "https://arui.vercel.app/r/separator.json",
+        "https://arui.vercel.app/r/sheet.json",
+        "https://arui.vercel.app/r/skeleton.json",
+        "https://arui.vercel.app/r/tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json",
+        "https://arui.vercel.app/r/toggle.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://arui.vercel.app/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/arui/components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
