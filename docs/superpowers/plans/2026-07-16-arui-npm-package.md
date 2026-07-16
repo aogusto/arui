@@ -469,14 +469,20 @@ git commit -m "chore(arui): remove infra de registry (registry.json, components.
 
 ---
 
-### Task 5: README do contrato npm + validação de empacotamento + smoke real
+### Task 5: README + cópia de instalação do showcase → npm + validação de empacotamento + smoke real
 
 **Files:**
 - Modify: `README.md` (contrato `shadcn add` → `npm install`)
+- Modify: `preview/showcase.ts` (dados de instalação: `HERO_INSTALL`, `INSTALL_STEPS`, remover `themeUrl`)
+- Modify: `preview/components/InstallSection.tsx` (narrativa de registry → npm)
+- Modify: `preview/components/ComponentsPlayground.tsx` (menção "in the registry")
+- Create: `LICENSE` (MIT — o `package.json` já declara `"license": "MIT"` mas não há arquivo)
 - Create (temporário, fora do repo): app de smoke em `/tmp/claude-1002/.../scratchpad/arui-smoke`
 
 **Interfaces:**
-- Consumes: `dist/` (Task 3). Produces: confiança de que o tarball instala e renderiza — gate para a Task 6.
+- Consumes: `dist/` (Task 3), `arui/theme.css`. Produces: confiança de que o tarball instala e renderiza — gate para a Task 6.
+
+**Contexto (gap descoberto na Task 4):** a Task 4 removeu `public/r/` (saída do `shadcn build`). Isso deixou órfãs as instruções de instalação **exibidas** no showcase, que ainda ensinam `npx shadcn add https://arui.vercel.app/r/*.json` (URLs agora mortas) e chamam a arui de "shadcn registry". Esta task passa a ser a dona dessa reescrita, junto com o README.
 
 - [ ] **Step 1: Reescrever o README para o contrato npm**
 
@@ -524,6 +530,55 @@ npm install react-hook-form
 
 Validação com zod é escolha sua (`zod` + `@hookform/resolvers`) — a arui não os exige.
 ````
+
+- [ ] **Step 1b: Reescrever a cópia de instalação exibida no showcase (registry → npm)**
+
+O showcase ainda ensina o fluxo `shadcn add`. Atualizar para o contrato npm. Nenhuma URL `/r/*.json` pode sobrar (foram deletadas na Task 4), e nada pode chamar a arui de "shadcn registry".
+
+Em `preview/showcase.ts`:
+- Remover a chave `themeUrl` do objeto `SITE` (aponta para `/r/theme.json`, morta). Se `componentCount`/demais campos forem usados noutros lugares, mantê-los.
+- Trocar `HERO_INSTALL`:
+  ```ts
+  export const HERO_INSTALL = `npm install arui`
+  ```
+- Substituir `INSTALL_STEPS` por um fluxo npm de 3 passos (cada `command` é uma única linha — `CommandRow` renderiza uma linha copiável; verifique como ela formata antes de assumir prefixo `$`):
+  ```ts
+  // Install flow: o pacote, depois duas linhas de CSS na ordem. A ordem importa
+  // (o @source precisa do theme já importado), então numerar é honesto.
+  export const INSTALL_STEPS = [
+    {
+      n: 1,
+      title: "Install the package",
+      body: "One dependency. React 19 and Tailwind CSS v4 are peers you already have.",
+      command: `npm install arui`,
+    },
+    {
+      n: 2,
+      title: "Import the theme",
+      body: "The HIG tokens, easings, dark variant and Inter — self-contained in one stylesheet. Add it to your app CSS.",
+      command: `@import "arui/theme.css";`,
+    },
+    {
+      n: 3,
+      title: "Let Tailwind see the components",
+      body: "Point Tailwind at the package so it generates the utilities the components use. Without this line the components render unstyled.",
+      command: `@source "../node_modules/arui/dist";`,
+    },
+  ] as const
+  ```
+
+Em `preview/components/InstallSection.tsx`:
+- `SectionHeading` `description` (linha ~24): trocar "Arui is a shadcn registry — the CLI copies real source into your project…" por uma frase npm-equivalente, ex.: "Install once, import what you need. Tree-shaken by default — only the components you use ship."
+- O card inferior "Dependencies come along for the ride." / "the registry resolves the graph…" (linhas ~65–87): reescrever para a realidade npm, ex.: título "Tree-shaken by default." e corpo explicando que só os componentes importados entram no bundle, e que `arui/theme.css` já traz fonte + animações. Remover a menção a "registry resolves the graph".
+- Manter o prerequisito Tailwind v4 (já correto) e o layout/estrutura da seção — só a cópia muda.
+
+Em `preview/components/ComponentsPlayground.tsx` (linha ~116): trocar "Fifty-seven components in the registry" por "Fifty-seven components" (ou "…in the library") — remover a palavra "registry".
+
+Verificação: `grep -rniE "shadcn|/r/|registry" preview` não deve retornar nenhuma instrução de instalação/venda viva (referências em comentários neutros são toleráveis, mas não deve haver `shadcn add`, URL `/r/`, nem "shadcn registry" como descrição do produto).
+
+- [ ] **Step 1c: Criar o arquivo `LICENSE` (MIT)**
+
+O `package.json` declara `"license": "MIT"` mas não há arquivo — o npm empacota o `LICENSE` no tarball se existir. Criar `LICENSE` na raiz com o texto MIT padrão, `Copyright (c) 2026 Augusto Ribeiro`.
 
 - [ ] **Step 2: Validar o tarball com publint + attw**
 
@@ -596,25 +651,31 @@ export default function App() {
 }
 ```
 
-- [ ] **Step 6: Rodar o smoke e confirmar visualmente**
+- [ ] **Step 6: Rodar o smoke e provar a entrega de CSS deterministicamente**
+
+Um subagente não abre browser, então a prova de que o `@source` funcionou é **grep no CSS emitido** (mais robusto que olhar a tela): se as utilities/tokens HIG aparecem no CSS gerado, o Tailwind escaneou o `dist` da arui.
 
 ```bash
 cd "$SMOKE"
-npm run build   # gate 1: compila e faz tree-shake sem erro
-npm run dev     # gate 2: abrir no browser
+npm run build   # gate 1: compila + tree-shake sem erro
+# gate 2: o CSS emitido contém tokens/utilities HIG (prova que @source pegou o dist da arui)
+CSS=$(find dist/assets -name '*.css' | head -1)
+echo "css: $CSS"
+grep -c "text-title-1\|--text-title-1\|--font-sans" "$CSS"   # esperado: > 0
+grep -c "\.bg-background\|--background" "$CSS"                 # esperado: > 0 (token de cor base usado pelos componentes)
 ```
 Expected:
-- `npm run build` conclui sem erro (tipos + bundle OK, componentes não usados fora do bundle).
-- No browser: `<Button>` com estilo HIG (não estilo cru), fonte Inter aplicada, o Sheet abre com animação (tw-animate-css). Adicionar `class="dark"` no `<html>` via DevTools inverte para dark mode.
+- `npm run build` exit 0.
+- Ambos os `grep -c` retornam um número > 0 — confirma que o `@source "../node_modules/arui/dist"` fez o Tailwind gerar o CSS das classes que os componentes usam. Se der 0, o `@source` está errado/ausente no `src/index.css` do smoke (ou o path relativo está errado) — corrigir e rebuildar.
 
-Se as classes não aparecerem (componentes sem estilo): o `@source` está errado/ausente — revisar o caminho relativo no `src/index.css` do smoke.
+Opcional (o controlador pode fazer depois via Playwright): confirmação visual no browser de estilo HIG + dark mode. Não bloqueia esta task.
 
-- [ ] **Step 7: Commit (só o README; o app de smoke é descartável e fica fora do repo)**
+- [ ] **Step 7: Commit (README + cópia do showcase + LICENSE; o app de smoke é descartável e fica fora do repo)**
 
 ```bash
 cd ~/workspace/arui
-git add README.md
-git commit -m "docs(arui): README do contrato npm (install + setup TW4 + forms opcional)"
+git add README.md preview/showcase.ts preview/components/InstallSection.tsx preview/components/ComponentsPlayground.tsx LICENSE
+git commit -m "docs(arui): contrato npm no README + showcase (install → npm install/TW4) + LICENSE MIT"
 ```
 
 ---
