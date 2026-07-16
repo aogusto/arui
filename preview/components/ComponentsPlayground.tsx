@@ -162,7 +162,7 @@ export function ComponentsPlayground() {
                   value="overview"
                   className="pt-3 text-footnote text-label-secondary"
                 >
-                  Frosted panels, HIG type, yours to edit.
+                  Frosted panels, HIG type, tuned to your theme.
                 </TabsContent>
                 <TabsContent
                   value="specs"

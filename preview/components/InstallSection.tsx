@@ -20,7 +20,7 @@ export function InstallSection() {
       <Reveal>
         <SectionHeading
           eyebrow="Install"
-          title="Copy, paste, own it."
+          title="Install it, import it."
           description="Install once, import what you need. Tree-shaken by default — only the components you use ship."
         />
       </Reveal>

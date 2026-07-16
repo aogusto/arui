@@ -31,9 +31,9 @@ export function Hero() {
                 Liquid glass, done right.
               </h1>
               <p className="max-w-xl text-body text-white/75 sm:text-callout">
-                A copy-paste React component library built on Apple HIG
-                materials. Own the code, keep the polish — frosted, blurred,
-                and yours to edit.
+                A React component library built on Apple HIG materials —
+                install it, import what you need, frosted and yours to
+                style.
               </p>
             </div>
 
