@@ -1,5 +1,4 @@
-import { GlassSurface } from "@/components/ui/glass-surface"
-import { Button } from "@/components/ui/button"
+import { GlassSurface, Button } from "arui"
 import { cn } from "@/lib/utils"
 import { NAV_LINKS, SITE } from "../showcase"
 import { GitHubMark, Wordmark } from "./icons"

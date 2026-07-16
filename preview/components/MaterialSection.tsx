@@ -1,4 +1,4 @@
-import { GlassSurface } from "@/components/ui/glass-surface"
+import { GlassSurface } from "arui"
 import { MATERIALS } from "../showcase"
 import { DriftingPhotos } from "./DriftingPhotos"
 import { Reveal } from "./Reveal"

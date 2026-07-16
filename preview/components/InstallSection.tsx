@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from "@/components/ui/card"
+} from "arui"
 import { INSTALL_STEPS } from "../showcase"
 import { CommandRow } from "./CommandRow"
 import { Reveal } from "./Reveal"

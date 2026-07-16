@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react"
-import { GlassSurface } from "@/components/ui/glass-surface"
-import { Button } from "@/components/ui/button"
+import { GlassSurface, Button } from "arui"
 import { HERO_INSTALL, SITE } from "../showcase"
 import { scrollToId } from "../lib/scroll"
 import { CommandRow } from "./CommandRow"

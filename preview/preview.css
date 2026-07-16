@@ -1,29 +1,18 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "@fontsource-variable/inter";
-@import "../registry/arui/theme/arui.css";
+@import "../src/theme.css";
+@source "../src";
 
 /* ---------------------------------------------------------------------------
    Arui showcase — motion primitives
-   The signature effect is imagery drifting behind frosted glass. The drift is
-   driven by pure CSS transforms so it never interferes with backdrop-filter
-   capture (a transformed ancestor between the backdrop and the glass breaks
-   the refraction; keeping the motion on the photo strip itself avoids that).
 --------------------------------------------------------------------------- */
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Seamless horizontal marquee: the strip holds two identical halves, so a
-   -50% translate lands frame-perfect and loops forever. */
 @keyframes arui-drift-x {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 .arui-drift {
@@ -33,37 +22,19 @@ html {
   will-change: transform;
 }
 
-/* Slow ambient parallax on the hero art for a touch of life beyond the drift. */
 @keyframes arui-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1.05);
-  }
-  50% {
-    transform: translate3d(0, -2%, 0) scale(1.08);
-  }
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50% { transform: translate3d(0, -2%, 0) scale(1.08); }
 }
 
 .arui-float {
   animation: arui-float 24s ease-in-out infinite;
 }
 
-/* A soft "grab" cue for draggable cards — kept subtle. */
-.arui-grip {
-  cursor: grab;
-  touch-action: none;
-}
-
-.arui-grip:active {
-  cursor: grabbing;
-}
+.arui-grip { cursor: grab; touch-action: none; }
+.arui-grip:active { cursor: grabbing; }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .arui-drift,
-  .arui-float {
-    animation: none !important;
-  }
+  html { scroll-behavior: auto; }
+  .arui-drift, .arui-float { animation: none !important; }
 }

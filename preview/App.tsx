@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "arui"
 import { useTheme } from "./lib/useTheme"
 import { Nav } from "./components/Nav"
 import { Hero } from "./components/Hero"
