@@ -6,10 +6,17 @@ type CommandRowProps = {
   /** "light" for placement over dark, imagery-backed panels (e.g. the hero) */
   tone?: "auto" | "light"
   className?: string
+  /** "shell" shows a `$` prompt (default); "css" is a stylesheet line, no shell prompt. */
+  kind?: "shell" | "css"
 }
 
 /** A terminal-style command line with a one-tap copy. Reused by hero + install. */
-export function CommandRow({ command, tone = "auto", className }: CommandRowProps) {
+export function CommandRow({
+  command,
+  tone = "auto",
+  className,
+  kind = "shell",
+}: CommandRowProps) {
   const light = tone === "light"
   return (
     <div
@@ -26,7 +33,7 @@ export function CommandRow({ command, tone = "auto", className }: CommandRowProp
           light ? "text-white/40" : "text-label-tertiary"
         )}
       >
-        $
+        {kind === "shell" ? "$" : "css"}
       </span>
       <code
         className={cn(

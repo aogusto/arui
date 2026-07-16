@@ -5,7 +5,6 @@ export const SITE = {
   name: "Arui",
   domain: "arui.vercel.app",
   github: "https://github.com/aogusto/arui",
-  themeUrl: "https://arui.vercel.app/r/theme.json",
   componentCount: 57, // glass-surface + 56 primitives
   primitiveCount: 13,
 } as const
@@ -33,22 +32,32 @@ export const NAV_LINKS = [
   { href: "#install", label: "Install" },
 ] as const
 
-export const HERO_INSTALL = `npx shadcn@latest add ${SITE.themeUrl}`
+export const HERO_INSTALL = `npm install arui`
 
-// Install flow — theme first, then any component. Order carries meaning here,
-// so numbering these steps is honest (unlike decorative counters elsewhere).
+// Install flow: o pacote, depois duas linhas de CSS na ordem. A ordem importa
+// (o @source precisa do theme já importado), então numerar é honesto.
+// `kind` distingue linha de shell ("$ …") de linha de CSS (sem prompt) — ver CommandRow.
 export const INSTALL_STEPS = [
   {
     n: 1,
-    title: "Add the theme",
-    body: "Installs the HIG tokens, easings, and the glass material. Everything else builds on it, so it goes first.",
-    command: `npx shadcn@latest add ${SITE.themeUrl}`,
+    title: "Install the package",
+    body: "One dependency. React 19 and Tailwind CSS v4 are peers you already have.",
+    command: `npm install arui`,
+    kind: "shell",
   },
   {
     n: 2,
-    title: "Add the components you need",
-    body: "Each component is copied into your project as source you own. Dependencies come along automatically.",
-    command: `npx shadcn@latest add https://${SITE.domain}/r/dialog.json`,
+    title: "Import the theme",
+    body: "The HIG tokens, easings, dark variant and Inter — self-contained in one stylesheet. Add it to your app CSS.",
+    command: `@import "arui/theme.css";`,
+    kind: "css",
+  },
+  {
+    n: 3,
+    title: "Let Tailwind see the components",
+    body: "Point Tailwind at the package so it generates the utilities the components use. Without this line the components render unstyled.",
+    command: `@source "../node_modules/arui/dist";`,
+    kind: "css",
   },
 ] as const
 

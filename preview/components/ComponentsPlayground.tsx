@@ -113,7 +113,7 @@ export function ComponentsPlayground() {
         <SectionHeading
           eyebrow="Components"
           title="Live, and loose."
-          description="Fifty-seven components in the registry — here's a handful, live and draggable. Grab a card by its header and toss it around; the frost carries the color underneath with it."
+          description="Fifty-seven components — here's a handful, live and draggable. Grab a card by its header and toss it around; the frost carries the color underneath with it."
         />
       </Reveal>
 

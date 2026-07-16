@@ -21,7 +21,7 @@ export function InstallSection() {
         <SectionHeading
           eyebrow="Install"
           title="Copy, paste, own it."
-          description="Arui is a shadcn registry — the CLI copies real source into your project. No runtime dependency, no lock-in. Nothing to upgrade but your own code."
+          description="Install once, import what you need. Tree-shaken by default — only the components you use ship."
         />
       </Reveal>
 
@@ -51,7 +51,7 @@ export function InstallSection() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <CommandRow command={step.command} />
+                <CommandRow command={step.command} kind={step.kind} />
               </CardContent>
             </Card>
           </Reveal>
@@ -63,27 +63,19 @@ export function InstallSection() {
           <PackageCheck className="mt-0.5 size-5 shrink-0 text-mint" />
           <div className="space-y-1">
             <p className="text-callout font-medium text-label">
-              Dependencies come along for the ride.
+              Tree-shaken by default.
             </p>
             <p className="text-subhead text-label-secondary">
-              Adding{" "}
+              Only the components you import end up in your bundle —{" "}
               <code className="rounded-md bg-fill px-1.5 py-0.5 font-mono text-caption-1 text-label">
-                dialog
+                Dialog
               </code>{" "}
-              also pulls in{" "}
+              pulls in the glass surface it depends on, nothing more.{" "}
               <code className="rounded-md bg-fill px-1.5 py-0.5 font-mono text-caption-1 text-label">
-                theme
-              </code>
-              ,{" "}
-              <code className="rounded-md bg-fill px-1.5 py-0.5 font-mono text-caption-1 text-label">
-                glass-surface
+                arui/theme.css
               </code>{" "}
-              and{" "}
-              <code className="rounded-md bg-fill px-1.5 py-0.5 font-mono text-caption-1 text-label">
-                button
-              </code>{" "}
-              — the registry resolves the graph, so you never chase a missing
-              import.
+              already brings the font and animations, so there's nothing else
+              to wire up.
             </p>
           </div>
         </div>
