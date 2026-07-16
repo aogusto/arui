@@ -7,8 +7,8 @@
     "radix-ui"
   ],
   "registryDependencies": [
-    "http://localhost:4173/r/theme.json",
-    "http://localhost:4173/r/glass-surface.json"
+    "https://aogusto.github.io/arui/r/theme.json",
+    "https://aogusto.github.io/arui/r/glass-surface.json"
   ],
   "files": [
     {

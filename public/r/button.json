@@ -7,7 +7,7 @@
     "radix-ui"
   ],
   "registryDependencies": [
-    "http://localhost:4173/r/theme.json"
+    "https://aogusto.github.io/arui/r/theme.json"
   ],
   "files": [
     {

@@ -54,20 +54,21 @@ Composed items pull their dependencies automatically. `dialog`, for example, res
 
 ## Installing
 
-The registry is served over HTTP. During local development the preview server exposes it at
-`http://localhost:4173/r/*.json` (see "Serving the registry locally" below); once hosted,
-swap that origin for your deployed base URL.
+The registry is hosted on GitHub Pages at **`https://aogusto.github.io/arui`**, so consumers
+install straight from that origin — `https://aogusto.github.io/arui/r/<item>.json`. (For a
+local copy of the registry, see "Serving the registry locally" below and swap the origin for
+`http://localhost:4173`.)
 
 **1. Install the theme foundation first** (it carries `cn()`, `use-mobile`, and every token):
 
 ```bash
-npx shadcn@latest add http://localhost:4173/r/theme.json
+npx shadcn@latest add https://aogusto.github.io/arui/r/theme.json
 ```
 
 **2. Then add the components you need:**
 
 ```bash
-npx shadcn@latest add http://localhost:4173/r/button.json http://localhost:4173/r/dialog.json
+npx shadcn@latest add https://aogusto.github.io/arui/r/button.json https://aogusto.github.io/arui/r/dialog.json
 ```
 
 **3. Wire the stylesheet imports**, in the CSS entry that already imports Tailwind. Order
@@ -199,8 +200,8 @@ import in `src/index.css` (the CLI drops the file at `src/styles/arui.css` but d
 the import for you):
 
 ```bash
-npx shadcn@latest add http://localhost:4173/r/theme.json
-npx shadcn@latest add http://localhost:4173/r/button.json http://localhost:4173/r/dialog.json
+npx shadcn@latest add https://aogusto.github.io/arui/r/theme.json
+npx shadcn@latest add https://aogusto.github.io/arui/r/button.json https://aogusto.github.io/arui/r/dialog.json
 ```
 
 `src/index.css` now carries all four imports, in this order:
@@ -249,10 +250,10 @@ The `form` item is a thin, accessible wrapper over `react-hook-form`. Pair it wi
 
 ```bash
 npx shadcn@latest add \
-  http://localhost:4173/r/form.json \
-  http://localhost:4173/r/input.json \
-  http://localhost:4173/r/label.json \
-  http://localhost:4173/r/button.json
+  https://aogusto.github.io/arui/r/form.json \
+  https://aogusto.github.io/arui/r/input.json \
+  https://aogusto.github.io/arui/r/label.json \
+  https://aogusto.github.io/arui/r/button.json
 npm install react-hook-form @hookform/resolvers zod
 ```
 
@@ -340,19 +341,34 @@ curl -s http://localhost:4173/r/theme.json | head
 The preview app (`npm run dev`) renders a gallery of every component for visual review in
 light and dark themes.
 
-## Hosting on a real origin
+## Hosting
+
+The live registry is hosted on **GitHub Pages** at `https://aogusto.github.io/arui`. Consumers
+install from there:
+
+```bash
+npx shadcn@latest add https://aogusto.github.io/arui/r/<item>.json
+```
+
+Deployment is automated: `.github/workflows/deploy-pages.yml` runs on every push to `master`,
+executes `npm run registry:build` + `npm run build:preview`, and publishes `dist/` (the preview
+gallery plus a copy of the registry JSON at `dist/r/*.json`) to Pages. The built gallery is
+served under the `/arui/` subpath — `vite.config.ts` sets `base: "/arui/"` for `command ===
+"build"` (dev stays on `/`).
+
+> **Enabling Pages (one-time repo setting):** in the GitHub repo, **Settings → Pages →
+> Build and deployment → Source = "GitHub Actions"**. Without this the workflow builds but
+> cannot deploy.
+
+### Changing the base URL
 
 The base URL is **baked into the generated JSON as absolute URLs**, not resolved at request
-time. `registry.json` uses `http://localhost:4173` for `homepage` and inside every
+time. `registry.json` uses `https://aogusto.github.io/arui` for `homepage` and inside every
 `registryDependencies` entry (e.g. `dialog` depends on
-`http://localhost:4173/r/theme.json`), and `shadcn build` copies those absolute URLs verbatim
-into each `public/r/*.json`. This is fine for local development, but it means a transitive
-install (`add dialog.json`, which pulls `theme` + `glass-surface` + `button`) will keep
-reaching for `localhost:4173` even after you deploy elsewhere.
+`https://aogusto.github.io/arui/r/theme.json`), and `shadcn build` copies those absolute URLs
+verbatim into each `public/r/*.json`. To host under a different origin:
 
-Before publishing to a real origin:
-
-1. In `registry.json`, replace `http://localhost:4173` with your deployed base URL — in
+1. In `registry.json`, replace `https://aogusto.github.io/arui` with the new base URL — in
    `homepage` **and** in every `registryDependencies` URL across all items.
 2. Re-run `npm run registry:build` so the regenerated `public/r/*.json` carry the new
    absolute URLs.

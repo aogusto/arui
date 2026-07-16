@@ -9,8 +9,8 @@
     "@hookform/resolvers"
   ],
   "registryDependencies": [
-    "http://localhost:4173/r/theme.json",
-    "http://localhost:4173/r/label.json"
+    "https://aogusto.github.io/arui/r/theme.json",
+    "https://aogusto.github.io/arui/r/label.json"
   ],
   "files": [
     {
