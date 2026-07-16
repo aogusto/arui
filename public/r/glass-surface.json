@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-surface",
+  "title": "GlassSurface",
+  "description": "Superfície frosted (assinatura Arui).",
+  "registryDependencies": [
+    "http://localhost:4173/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "registry/arui/components/ui/glass-surface.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst glass = {\n  regular:\n    \"glass \" +\n    \"bg-glass-regular/60 supports-[backdrop-filter]:bg-glass-regular/40 \" +\n    \"backdrop-blur-glass backdrop-saturate-150 \" +\n    \"[-webkit-backdrop-filter:blur(24px)_saturate(180%)] \" +\n    \"border border-white/15 dark:border-white/10 \" +\n    \"shadow-glass\",\n  thick:\n    \"glass \" +\n    \"bg-glass-regular/96 supports-[backdrop-filter]:bg-glass-regular/90 \" +\n    \"backdrop-blur-md backdrop-saturate-150 \" +\n    \"[-webkit-backdrop-filter:blur(12px)_saturate(180%)] \" +\n    \"border border-white/15 dark:border-white/10 \" +\n    \"shadow-glass\",\n  clear:\n    \"glass-clear \" +\n    \"bg-glass-clear/10 supports-[backdrop-filter]:bg-glass-clear/5 \" +\n    \"backdrop-blur-[12px] backdrop-saturate-150 \" +\n    \"border border-white/10 \" +\n    \"shadow-glass-sm\",\n}\n\ntype GlassSurfaceProps = React.HTMLAttributes<HTMLDivElement> & {\n  variant?: \"regular\" | \"thick\" | \"clear\"\n  dim?: boolean\n}\n\nfunction GlassSurface({\n  variant = \"regular\",\n  dim = false,\n  className,\n  children,\n  ...props\n}: GlassSurfaceProps) {\n  return (\n    <div className={cn(\"relative isolate rounded-2xl\", className)} {...props}>\n      {dim && variant === \"clear\" && (\n        <div\n          aria-hidden\n          className=\"absolute inset-0 rounded-[inherit] bg-black/35\"\n        />\n      )}\n      <div className={cn(\"rounded-[inherit]\", glass[variant])}>{children}</div>\n    </div>\n  )\n}\n\nexport { GlassSurface, glass }\nexport type { GlassSurfaceProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

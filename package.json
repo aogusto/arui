@@ -8,6 +8,7 @@
     "build:preview": "tsc -b && vite build",
     "preview": "vite preview",
     "registry:build": "shadcn build",
+    "registry:validate": "node scripts/validate-registry.mjs",
     "typecheck": "tsc -b"
   },
   "dependencies": {

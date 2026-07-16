@@ -1,0 +1,128 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "arui",
+  "homepage": "http://localhost:4173",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:style",
+      "title": "Arui theme (Apple HIG)",
+      "description": "Tokens HIG, cn() e use-mobile — fundação da Arui.",
+      "dependencies": ["tailwind-merge", "clsx", "class-variance-authority", "tw-animate-css"],
+      "files": [
+        { "path": "registry/arui/lib/utils.ts", "type": "registry:lib", "target": "lib/utils.ts" },
+        { "path": "registry/arui/hooks/use-mobile.ts", "type": "registry:hook", "target": "hooks/use-mobile.ts" },
+        { "path": "registry/arui/theme/arui.css", "type": "registry:file", "target": "styles/arui.css" }
+      ]
+    },
+    {
+      "name": "glass-surface",
+      "type": "registry:ui",
+      "title": "GlassSurface",
+      "description": "Superfície frosted (assinatura Arui).",
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/glass-surface.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/button.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/input.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/label.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/badge.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/skeleton.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json"],
+      "files": [{ "path": "registry/arui/components/ui/tabs.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json", "http://localhost:4173/r/glass-surface.json"],
+      "files": [{ "path": "registry/arui/components/ui/tooltip.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json", "http://localhost:4173/r/glass-surface.json"],
+      "files": [{ "path": "registry/arui/components/ui/select.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json", "http://localhost:4173/r/glass-surface.json", "http://localhost:4173/r/button.json"],
+      "files": [{ "path": "registry/arui/components/ui/dialog.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json", "http://localhost:4173/r/glass-surface.json", "http://localhost:4173/r/button.json"],
+      "files": [{ "path": "registry/arui/components/ui/sheet.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "dependencies": ["radix-ui", "react-hook-form", "zod", "@hookform/resolvers"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json", "http://localhost:4173/r/label.json"],
+      "files": [{ "path": "registry/arui/components/ui/form.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Toaster",
+      "dependencies": ["sonner", "next-themes", "lucide-react"],
+      "registryDependencies": ["http://localhost:4173/r/theme.json", "http://localhost:4173/r/glass-surface.json"],
+      "files": [{ "path": "registry/arui/components/ui/sonner.tsx", "type": "registry:ui" }]
+    }
+  ]
+}
