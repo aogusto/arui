@@ -6,6 +6,8 @@ import { defineConfig } from "vite"
 export default defineConfig({
   // Vercel serve na raiz do domínio → base "/" (default). No GitHub Pages seria "/arui/".
   plugins: [react(), tailwindcss()],
+  // O showcase (build:preview) NÃO pode escrever em dist/ — dist/ é da lib (tsup) e é publicado (files: ["dist"]).
+  build: { outDir: "showcase-dist" },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

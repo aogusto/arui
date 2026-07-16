@@ -1,5 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run registry:build && npm run build:preview",
-  "outputDirectory": "dist"
+  "buildCommand": "npm run build:preview",
+  "outputDirectory": "showcase-dist"
 }
