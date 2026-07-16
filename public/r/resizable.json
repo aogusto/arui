@@ -3,7 +3,7 @@
   "name": "resizable",
   "title": "Resizable",
   "dependencies": [
-    "react-resizable-panels"
+    "react-resizable-panels@^4.11.0"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json"

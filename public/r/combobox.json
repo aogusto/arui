@@ -3,8 +3,8 @@
   "name": "combobox",
   "title": "Combobox",
   "dependencies": [
-    "@base-ui/react",
-    "lucide-react"
+    "@base-ui/react@^1.4.1",
+    "lucide-react@^1.14.0"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json",

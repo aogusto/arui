@@ -3,7 +3,7 @@
   "name": "alert-dialog",
   "title": "Alert Dialog",
   "dependencies": [
-    "radix-ui"
+    "radix-ui@^1.4.3"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json",

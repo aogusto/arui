@@ -3,7 +3,7 @@
   "name": "chart",
   "title": "Chart",
   "dependencies": [
-    "recharts"
+    "recharts@3.8.0"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json"

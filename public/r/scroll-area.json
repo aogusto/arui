@@ -3,7 +3,7 @@
   "name": "scroll-area",
   "title": "Scroll Area",
   "dependencies": [
-    "radix-ui"
+    "radix-ui@^1.4.3"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json"

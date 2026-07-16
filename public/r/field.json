@@ -3,7 +3,7 @@
   "name": "field",
   "title": "Field",
   "dependencies": [
-    "class-variance-authority"
+    "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json",

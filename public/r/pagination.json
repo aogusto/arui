@@ -3,7 +3,7 @@
   "name": "pagination",
   "title": "Pagination",
   "dependencies": [
-    "lucide-react"
+    "lucide-react@^1.14.0"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json",

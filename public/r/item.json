@@ -3,8 +3,8 @@
   "name": "item",
   "title": "Item",
   "dependencies": [
-    "class-variance-authority",
-    "radix-ui"
+    "class-variance-authority@^0.7.1",
+    "radix-ui@^1.4.3"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json",

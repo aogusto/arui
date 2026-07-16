@@ -3,8 +3,8 @@
   "name": "select",
   "title": "Select",
   "dependencies": [
-    "lucide-react",
-    "radix-ui"
+    "lucide-react@^1.14.0",
+    "radix-ui@^1.4.3"
   ],
   "registryDependencies": [
     "https://arui.vercel.app/r/theme.json",
