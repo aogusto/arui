@@ -1,0 +1,411 @@
+@custom-variant dark (&:is(.dark *));
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility pl-safe {
+  padding-left: env(safe-area-inset-left);
+}
+@utility pr-safe {
+  padding-right: env(safe-area-inset-right);
+}
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: 'Inter Variable', sans-serif;
+    /* Apple HIG type scale */
+    --text-large-title: 34px;
+    --text-large-title--line-height: 41px;
+    --text-large-title--font-weight: 700;
+    --text-large-title--letter-spacing: -0.02em;
+
+    --text-title-1: 28px;
+    --text-title-1--line-height: 34px;
+    --text-title-1--font-weight: 700;
+    --text-title-1--letter-spacing: -0.02em;
+
+    --text-title-2: 22px;
+    --text-title-2--line-height: 28px;
+    --text-title-2--font-weight: 700;
+
+    --text-title-3: 20px;
+    --text-title-3--line-height: 25px;
+    --text-title-3--font-weight: 600;
+
+    --text-headline: 17px;
+    --text-headline--line-height: 22px;
+    --text-headline--font-weight: 600;
+
+    --text-body: 17px;
+    --text-body--line-height: 22px;
+    --text-body--font-weight: 400;
+
+    --text-callout: 16px;
+    --text-callout--line-height: 21px;
+    --text-callout--font-weight: 400;
+
+    --text-subhead: 15px;
+    --text-subhead--line-height: 20px;
+    --text-subhead--font-weight: 400;
+
+    --text-footnote: 13px;
+    --text-footnote--line-height: 18px;
+    --text-footnote--font-weight: 400;
+
+    --text-caption-1: 12px;
+    --text-caption-1--line-height: 16px;
+    --text-caption-1--font-weight: 400;
+
+    --text-caption-2: 11px;
+    --text-caption-2--line-height: 13px;
+    --text-caption-2--font-weight: 400;
+    /* Apple HIG semantic colors */
+    --color-label: hsl(var(--label));
+    --color-label-secondary: hsl(var(--label-secondary));
+    --color-label-tertiary: hsl(var(--label-tertiary));
+    --color-label-quaternary: hsl(var(--label-quaternary));
+    --color-fill: hsl(var(--fill));
+    --color-fill-secondary: hsl(var(--fill-secondary));
+    --color-fill-tertiary: hsl(var(--fill-tertiary));
+    --color-fill-quaternary: hsl(var(--fill-quaternary));
+    --color-background-secondary: hsl(var(--background-secondary));
+    --color-background-tertiary: hsl(var(--background-tertiary));
+    --color-separator: hsl(var(--separator));
+    --color-separator-opaque: hsl(var(--separator-opaque));
+    --color-hig-accent: hsl(var(--hig-accent));
+    --color-hig-accent-foreground: hsl(var(--hig-accent-foreground));
+    --color-red: hsl(var(--red));
+    --color-orange: hsl(var(--orange));
+    --color-yellow: hsl(var(--yellow));
+    --color-green: hsl(var(--green));
+    --color-mint: hsl(var(--mint));
+    --color-teal: hsl(var(--teal));
+    --color-cyan: hsl(var(--cyan));
+    --color-indigo: hsl(var(--indigo));
+    --color-purple: hsl(var(--purple));
+    --color-pink: hsl(var(--pink));
+    --color-brown: hsl(var(--brown));
+    /* Glass tints (RGB so alpha-value modifier works) */
+    --color-glass-regular: rgb(var(--glass-regular));
+    --color-glass-clear: rgb(var(--glass-clear));
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+    /* HIG Glass — shadow and blur tokens */
+    --shadow-glass: 0 1px 0 0 rgb(255 255 255 / 0.35) inset, 0 8px 24px -8px rgb(0 0 0 / 0.25);
+    --shadow-glass-sm: 0 1px 0 0 rgb(255 255 255 / 0.25) inset, 0 2px 8px -2px rgb(0 0 0 / 0.2);
+    --blur-glass: 24px;
+    /* HIG motion — easing */
+    --ease-apple-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-apple-out: cubic-bezier(0.0, 0, 0.2, 1);
+    --ease-apple: cubic-bezier(0.2, 0, 0, 1);
+    --ease-apple-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Login brand panel — ambient blob drift */
+    --animate-login-blob-1: login-blob-1 18s ease-in-out infinite;
+    --animate-login-blob-2: login-blob-2 22s ease-in-out infinite;
+    --animate-login-blob-3: login-blob-3 26s ease-in-out infinite;
+}
+
+@keyframes login-blob-1 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50%      { transform: translate3d(8%, 6%, 0) scale(1.1); }
+}
+@keyframes login-blob-2 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50%      { transform: translate3d(-6%, -8%, 0) scale(1.08); }
+}
+@keyframes login-blob-3 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50%      { transform: translate3d(4%, -4%, 0) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-login-blob-1,
+    .animate-login-blob-2,
+    .animate-login-blob-3 {
+        animation: none !important;
+    }
+}
+
+/* Scroll horizontal — fade dinâmico nas bordas.
+   O hook useScrollFade (src/hooks/useScrollFade.ts) escreve data-at-start /
+   data-at-end; aqui o mask-image desbota a borda com overflow. */
+@property --scroll-fade-l {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+@property --scroll-fade-r {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
+[data-scroll-fade] {
+    --scroll-fade-size: 1.5rem;
+    --scroll-fade-l: 0px;
+    --scroll-fade-r: 0px;
+    scrollbar-width: none;
+    mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 var(--scroll-fade-l),
+        #000 calc(100% - var(--scroll-fade-r)),
+        transparent 100%
+    );
+    transition:
+        --scroll-fade-l 200ms var(--ease-apple-out),
+        --scroll-fade-r 200ms var(--ease-apple-out);
+}
+
+[data-scroll-fade]::-webkit-scrollbar {
+    display: none;
+}
+
+[data-scroll-fade][data-at-start='false'] {
+    --scroll-fade-l: var(--scroll-fade-size);
+}
+
+[data-scroll-fade][data-at-end='false'] {
+    --scroll-fade-r: var(--scroll-fade-size);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-scroll-fade] {
+        transition: none;
+    }
+}
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.141 0.005 285.823);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.141 0.005 285.823);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.141 0.005 285.823);
+    --primary: oklch(0.5 0.134 242.749);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.967 0.001 286.375);
+    --secondary-foreground: oklch(0.21 0.006 285.885);
+    --muted: oklch(0.967 0.001 286.375);
+    --muted-foreground: oklch(0.552 0.016 285.938);
+    --accent: oklch(0.967 0.001 286.375);
+    --accent-foreground: oklch(0.21 0.006 285.885);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.92 0.004 286.32);
+    --input: oklch(0.92 0.004 286.32);
+    --ring: oklch(0.705 0.015 286.067);
+    --chart-1: oklch(0.828 0.111 230.318);
+    --chart-2: oklch(0.685 0.169 237.323);
+    --chart-3: oklch(0.588 0.158 241.966);
+    --chart-4: oklch(0.5 0.134 242.749);
+    --chart-5: oklch(0.443 0.11 240.79);
+    --radius: 0.875rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.141 0.005 285.823);
+    --sidebar-primary: oklch(0.588 0.158 241.966);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.967 0.001 286.375);
+    --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+    --sidebar-border: oklch(0.92 0.004 286.32);
+    --sidebar-ring: oklch(0.705 0.015 286.067);
+
+    /* === Apple HIG semantic tokens — light === */
+    /* Label hierarchy */
+    --label:            0 0% 0%;
+    --label-secondary:  240 3% 40%;
+    --label-tertiary:   240 3% 60%;
+    --label-quaternary: 240 3% 75%;
+
+    /* Fills */
+    --fill:             240 6% 90%;
+    --fill-secondary:   240 6% 93%;
+    --fill-tertiary:    240 6% 96%;
+    --fill-quaternary:  240 6% 98%;
+
+    /* Background layers */
+    --background-secondary: 240 10% 97%;
+    --background-tertiary:  0 0% 100%;
+
+    /* Separators */
+    /* NOTE: --separator in dark mode embeds 12% alpha (HIG §3.1). DO NOT
+       use Tailwind alpha modifier on this token (e.g. `border-separator/50`)
+       — alpha is already baked in and the modifier produces inconsistent
+       results between light/dark. Use `--separator-opaque` if you need
+       to control alpha externally. */
+    --separator:         240 6% 85%;
+    --separator-opaque:  240 6% 80%;
+
+    /* Accent + system colors */
+    --hig-accent:        211 100% 50%;
+    --hig-accent-foreground: 0 0% 100%;
+    --red:    4 90% 58%;
+    --orange: 28 100% 52%;
+    --yellow: 45 100% 50%;
+    --green:  142 71% 45%;
+    --mint:   170 60% 48%;
+    --teal:   184 69% 47%;
+    --cyan:   195 85% 55%;
+    --indigo: 238 70% 60%;
+    --purple: 282 73% 59%;
+    --pink:   340 82% 60%;
+    --brown:  24 40% 46%;
+
+    /* Channel Stories ring gradient */
+    --channel-stories-ring: conic-gradient(
+      from 0deg,
+      hsl(var(--cyan)),
+      hsl(var(--hig-accent)),
+      hsl(var(--indigo)),
+      hsl(var(--cyan))
+    );
+
+    /* Glass material channels (RGB triplets) */
+    --glass-regular: 255 255 255;
+    --glass-clear:   255 255 255;
+}
+
+.dark {
+    --background: oklch(0.141 0.005 285.823);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.21 0.006 285.885);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.21 0.006 285.885);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.443 0.11 240.79);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.274 0.006 286.033);
+    --muted-foreground: oklch(0.705 0.015 286.067);
+    --accent: oklch(0.274 0.006 286.033);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.552 0.016 285.938);
+    --chart-1: oklch(0.828 0.111 230.318);
+    --chart-2: oklch(0.685 0.169 237.323);
+    --chart-3: oklch(0.588 0.158 241.966);
+    --chart-4: oklch(0.5 0.134 242.749);
+    --chart-5: oklch(0.443 0.11 240.79);
+    --sidebar: oklch(0.21 0.006 285.885);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.685 0.169 237.323);
+    --sidebar-primary-foreground: oklch(0.293 0.066 243.157);
+    --sidebar-accent: oklch(0.274 0.006 286.033);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.552 0.016 285.938);
+
+    /* === Apple HIG semantic tokens — dark === */
+    /* Label hierarchy */
+    --label:            0 0% 100%;
+    --label-secondary:  240 3% 70%;
+    --label-tertiary:   240 3% 55%;
+    --label-quaternary: 240 3% 40%;
+
+    /* Fills */
+    --fill:             240 6% 20%;
+    --fill-secondary:   240 6% 16%;
+    --fill-tertiary:    240 6% 12%;
+    --fill-quaternary:  240 6% 10%;
+
+    /* Background layers */
+    --background-secondary: 240 6% 7%;
+    --background-tertiary:  240 6% 11%;
+
+    /* Separators */
+    --separator:        0 0% 100% / 0.12;
+    --separator-opaque: 240 6% 22%;
+
+    /* Accent (system colors inherited from :root) */
+    --hig-accent:        211 100% 54%;
+    --hig-accent-foreground: 0 0% 100%;
+
+    /* Glass material channels (RGB triplets) */
+    --glass-regular: 28 28 30;
+    --glass-clear:   0 0 0;
+}
+
+/* HIG Increased Contrast */
+@media (prefers-contrast: more) {
+    :root {
+        --separator: 240 6% 60%;
+        --label-secondary: 240 3% 25%;
+    }
+    .dark {
+        --separator: 0 0% 100% / 0.3;
+        --label-secondary: 240 3% 85%;
+    }
+}
+
+/* HIG Glass — accessibility fallbacks */
+@media (prefers-reduced-transparency: reduce) {
+    .glass, .glass-clear {
+        backdrop-filter: none !important;
+        background-color: hsl(var(--background)) !important;
+    }
+}
+@media (prefers-contrast: more) {
+    .glass, .glass-clear {
+        background-color: hsl(var(--background)) !important;
+        border-color: hsl(var(--foreground) / 0.5) !important;
+    }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    overscroll-behavior-y: contain;
+    }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+    }
+  html {
+    @apply font-sans;
+    scrollbar-gutter: stable;
+    }
+}
