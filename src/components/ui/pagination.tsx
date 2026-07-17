@@ -2,6 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useGlassHighlight, GlassPill } from "@/components/ui/glass-highlight"
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
@@ -18,14 +19,25 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
 
 function PaginationContent({
   className,
+  children,
   ...props
 }: React.ComponentProps<"ul">) {
+  const contentRef = React.useRef<HTMLUListElement>(null)
+  const { geometry } = useGlassHighlight({
+    containerRef: contentRef,
+    activeSelector: '[aria-current="page"]',
+  })
+
   return (
     <ul
+      ref={contentRef}
       data-slot="pagination-content"
-      className={cn("flex items-center gap-1", className)}
+      className={cn("relative flex items-center gap-1", className)}
       {...props}
-    />
+    >
+      <GlassPill geometry={geometry} />
+      {children}
+    </ul>
   )
 }
 
@@ -49,12 +61,21 @@ function PaginationLink({
       asChild
       variant={isActive ? "outline" : "ghost"}
       size={size}
-      className={cn(className)}
+      className={cn(
+        // Página ativa: o glass pill (renderizado pelo PaginationContent) já
+        // comunica o destaque, então o fundo/borda sólidos do variant
+        // "outline" ficam redundantes aqui. Neutraliza só nesta instância
+        // (nunca em buttonVariants) pra não afetar outros usos de outline.
+        isActive &&
+          "border-transparent bg-transparent shadow-none dark:border-transparent dark:bg-transparent",
+        className
+      )}
     >
       <a
         aria-current={isActive ? "page" : undefined}
         data-slot="pagination-link"
         data-active={isActive}
+        className="relative z-10"
         {...props}
       />
     </Button>
