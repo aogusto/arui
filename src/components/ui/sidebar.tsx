@@ -446,7 +446,7 @@ function SidebarMenu({ className, children, ...props }: React.ComponentProps<"ul
   const menuRef = React.useRef<HTMLUListElement>(null)
   const { geometry } = useGlassHighlight({
     containerRef: menuRef,
-    activeSelector: '[data-active="true"]',
+    activeSelector: '[data-sidebar="menu-button"][data-active="true"]',
     measure: "rect",
   })
 
@@ -632,7 +632,7 @@ function SidebarMenuSub({ className, children, ...props }: React.ComponentProps<
   const subRef = React.useRef<HTMLUListElement>(null)
   const { geometry } = useGlassHighlight({
     containerRef: subRef,
-    activeSelector: '[data-active="true"]',
+    activeSelector: '[data-sidebar="menu-sub-button"][data-active="true"]',
     measure: "rect",
   })
 
