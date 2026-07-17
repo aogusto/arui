@@ -2,17 +2,38 @@
   "name": "@aogusto/arui",
   "version": "0.1.0",
   "description": "Biblioteca de componentes React — Apple HIG + Tailwind 4 (shadcn-derived).",
-  "keywords": ["react", "components", "ui", "tailwind", "tailwindcss", "shadcn", "apple-hig", "design-system", "radix", "component-library"],
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwind",
+    "tailwindcss",
+    "shadcn",
+    "apple-hig",
+    "design-system",
+    "radix",
+    "component-library"
+  ],
   "license": "MIT",
   "author": "Augusto Ribeiro",
-  "repository": { "type": "git", "url": "git+https://github.com/aogusto/arui.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aogusto/arui.git"
+  },
   "homepage": "https://arui.vercel.app",
   "bugs": "https://github.com/aogusto/arui/issues",
   "type": "module",
-  "sideEffects": ["**/*.css"],
-  "files": ["dist"],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./theme.css": "./dist/theme.css"
   },
   "scripts": {
@@ -27,11 +48,13 @@
   "peerDependencies": {
     "react": ">=19",
     "react-dom": ">=19",
-    "tailwindcss": "^4",
-    "react-hook-form": "^7"
+    "react-hook-form": "^7",
+    "tailwindcss": "^4"
   },
   "peerDependenciesMeta": {
-    "react-hook-form": { "optional": true }
+    "react-hook-form": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -55,6 +78,7 @@
   "devDependencies": {
     "@hookform/resolvers": "^5.4.0",
     "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-router": "^1.170.18",
     "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

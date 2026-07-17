@@ -1,18 +1,18 @@
 import { useEffect } from "react"
 import { Toaster } from "@aogusto/arui"
-import { useTheme } from "./lib/useTheme"
-import { Nav } from "./components/Nav"
-import { Hero } from "./components/Hero"
-import { MaterialSection } from "./components/MaterialSection"
-import { ComponentsPlayground } from "./components/ComponentsPlayground"
-import { InstallSection } from "./components/InstallSection"
-import { Footer } from "./components/Footer"
+import { useTheme } from "../lib/useTheme"
+import { Nav } from "../components/Nav"
+import { Hero } from "../components/Hero"
+import { MaterialSection } from "../components/MaterialSection"
+import { ComponentsPlayground } from "../components/ComponentsPlayground"
+import { InstallSection } from "../components/InstallSection"
+import { Footer } from "../components/Footer"
 
-export default function App() {
+export function HomePage() {
   const { theme, toggle } = useTheme()
 
   useEffect(() => {
-    document.title = "Arui — Liquid glass React components"
+    document.title = "Arui: React components with glassmorphism"
   }, [])
 
   return (
@@ -40,3 +40,5 @@ export default function App() {
     </div>
   )
 }
+
+export default HomePage

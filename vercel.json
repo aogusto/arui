@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build:preview",
-  "outputDirectory": "showcase-dist"
+  "outputDirectory": "showcase-dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
