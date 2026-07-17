@@ -28,11 +28,11 @@ export function Hero() {
 
             <div className="space-y-5">
               <h1 className="text-[clamp(2.6rem,8vw,4.75rem)] font-bold leading-[1.02] tracking-[-0.03em] text-white text-balance">
-                Liquid glass, done right.
+                Glassmorphism, done right.
               </h1>
               <p className="max-w-xl text-body text-white/75 sm:text-callout">
-                A React component library built on Apple HIG materials —
-                install it, import what you need, frosted and yours to
+                A React component library built on Apple HIG materials.
+                Install it, import what you need, frosted and yours to
                 style.
               </p>
             </div>

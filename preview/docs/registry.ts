@@ -1,4 +1,4 @@
-// Fonte única da navegação de docs. Ordem e categorias fixas — bate com `ls src/components/ui`.
+// Fonte única da navegação de docs. Ordem e categorias fixas, bate com `ls src/components/ui`.
 export type DocCategory =
   | "Signature"
   | "Forms & Inputs"

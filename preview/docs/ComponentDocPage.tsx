@@ -24,7 +24,7 @@ export function ComponentDocPage() {
       </div>
     )
   return (
-    <Suspense fallback={<p className="text-subhead text-label-tertiary">Loading…</p>}>
+    <Suspense fallback={<p className="text-subhead text-label-tertiary">Loading...</p>}>
       <Page />
     </Suspense>
   )

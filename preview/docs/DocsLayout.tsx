@@ -7,7 +7,7 @@ import { ThemeToggle } from "../components/ThemeToggle"
 import { CommandMenu } from "./CommandMenu"
 import { DOCS_REGISTRY, DOCS_CATEGORIES } from "./registry"
 
-function SidebarNav() {
+function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <nav className="space-y-6 text-subhead">
       {DOCS_CATEGORIES.map((cat) => (
@@ -20,6 +20,7 @@ function SidebarNav() {
               key={e.slug}
               to="/docs/components/$slug"
               params={{ slug: e.slug }}
+              onClick={onNavigate}
               className="block rounded-md px-2 py-1.5 text-label-secondary hover:bg-fill hover:text-label [&.active]:bg-fill [&.active]:font-medium [&.active]:text-label"
             >
               {e.name}
@@ -34,18 +35,19 @@ function SidebarNav() {
 export function DocsLayout() {
   const { theme, toggle } = useTheme()
   const [commandOpen, setCommandOpen] = useState(false)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <CommandMenu open={commandOpen} onOpenChange={setCommandOpen} />
       <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b border-separator bg-background/80 px-4 backdrop-blur-glass">
-        <Sheet>
+        <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="lg:hidden">
               <Menu className="size-5" />
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-72 overflow-y-auto p-4">
-            <SidebarNav />
+            <SidebarNav onNavigate={() => setMobileNavOpen(false)} />
           </SheetContent>
         </Sheet>
         <Link to="/" className="text-headline font-semibold">arui</Link>
