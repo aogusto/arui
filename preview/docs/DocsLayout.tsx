@@ -14,15 +14,10 @@ function SidebarNav() {
             {cat}
           </p>
           {DOCS_REGISTRY.filter((e) => e.category === cat).map((e) => (
-            // `/docs/components/$slug` is only registered as a route in Task 3
-            // (componentRoute, child of docsRoute). Until then TanStack
-            // Router's generated route union doesn't include it, so `to`
-            // needs a cast here; it resolves to a normal typed link once
-            // Task 3 attaches the child route (safe to drop the cast then).
             <Link
               key={e.slug}
-              to={"/docs/components/$slug" as any}
-              params={{ slug: e.slug } as any}
+              to="/docs/components/$slug"
+              params={{ slug: e.slug }}
               className="block rounded-md px-2 py-1.5 text-label-secondary hover:bg-fill hover:text-label [&.active]:bg-fill [&.active]:font-medium [&.active]:text-label"
             >
               {e.name}

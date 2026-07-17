@@ -2,6 +2,7 @@ import { createRootRoute, createRoute, createRouter, Outlet } from "@tanstack/re
 import { HomePage } from "./pages/HomePage"
 import { DocsLayout } from "./docs/DocsLayout"
 import { GettingStarted } from "./docs/GettingStarted"
+import { ComponentDocPage } from "./docs/ComponentDocPage"
 
 export const rootRoute = createRootRoute({ component: () => <Outlet /> })
 
@@ -23,10 +24,15 @@ const docsIndexRoute = createRoute({
   component: GettingStarted,
 })
 
-// Task 3 adiciona componentRoute como filha de docsRoute.
+const componentRoute = createRoute({
+  getParentRoute: () => docsRoute,
+  path: "components/$slug",
+  component: ComponentDocPage,
+})
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
-  docsRoute.addChildren([docsIndexRoute]),
+  docsRoute.addChildren([docsIndexRoute, componentRoute]),
 ])
 
 export const router = createRouter({ routeTree })
