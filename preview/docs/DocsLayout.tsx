@@ -23,6 +23,9 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
         <Link to="/docs/design" onClick={onNavigate} className={guideLinkClass}>
           Design guide
         </Link>
+        <Link to="/docs/theming" onClick={onNavigate} className={guideLinkClass}>
+          Theming
+        </Link>
         <Link to="/docs/mcp" onClick={onNavigate} className={guideLinkClass}>
           AI agents (MCP)
         </Link>

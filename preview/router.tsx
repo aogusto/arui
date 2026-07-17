@@ -5,6 +5,7 @@ import { GettingStarted } from "./docs/GettingStarted"
 import { ComponentDocPage } from "./docs/ComponentDocPage"
 import { McpPage } from "./docs/McpPage"
 import { DesignPage } from "./docs/DesignPage"
+import { ThemingPage } from "./docs/ThemingPage"
 
 export const rootRoute = createRootRoute({ component: () => <Outlet /> })
 
@@ -44,9 +45,15 @@ const designRoute = createRoute({
   component: DesignPage,
 })
 
+const themingRoute = createRoute({
+  getParentRoute: () => docsRoute,
+  path: "theming",
+  component: ThemingPage,
+})
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
-  docsRoute.addChildren([docsIndexRoute, mcpRoute, designRoute, componentRoute]),
+  docsRoute.addChildren([docsIndexRoute, mcpRoute, designRoute, themingRoute, componentRoute]),
 ])
 
 export const router = createRouter({ routeTree })

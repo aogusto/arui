@@ -13,6 +13,8 @@ import Vertical from "./examples/vertical"
 import verticalCode from "./examples/vertical.tsx?raw"
 import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
+import Glass from "./examples/glass"
+import glassCode from "./examples/glass.tsx?raw"
 
 export default function TabsDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`
@@ -35,6 +37,7 @@ export default function TabsDoc() {
         <Demo title="With icons" code={withIconsCode}><WithIcons /></Demo>
         <Demo title="Vertical orientation" code={verticalCode}><Vertical /></Demo>
         <Demo title="Disabled tab" code={disabledCode}><Disabled /></Demo>
+        <Demo title="Glass" code={glassCode}><Glass /></Demo>
       </div>
 
       <section className="space-y-6">

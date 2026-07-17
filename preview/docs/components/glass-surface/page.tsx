@@ -13,6 +13,8 @@ import FloatingToolbar from "./examples/floating-toolbar"
 import floatingToolbarCode from "./examples/floating-toolbar.tsx?raw"
 import ActionBar from "./examples/action-bar"
 import actionBarCode from "./examples/action-bar.tsx?raw"
+import Tinted from "./examples/tinted"
+import tintedCode from "./examples/tinted.tsx?raw"
 
 export default function GlassSurfaceDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`
@@ -35,6 +37,7 @@ export default function GlassSurfaceDoc() {
         <Demo title="With content" code={withContentCode}><WithContent /></Demo>
         <Demo title="Floating toolbar" code={floatingToolbarCode}><FloatingToolbar /></Demo>
         <Demo title="Docked action bar" code={actionBarCode}><ActionBar /></Demo>
+        <Demo title="Tinted" code={tintedCode}><Tinted /></Demo>
       </div>
 
       <section className="space-y-3">

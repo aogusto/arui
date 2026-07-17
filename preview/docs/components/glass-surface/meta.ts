@@ -23,6 +23,11 @@ export const props: PropRow[] = [
     description: "Adds a dark scrim behind the surface so content stays legible on busy or bright backgrounds. Only applies when variant is clear.",
   },
   {
+    prop: "tint",
+    type: '"accent" | (string & {})',
+    description: "Tints the material with the theme accent or any CSS color.",
+  },
+  {
     prop: "className",
     type: "string",
     description: "Additional classes, merged with the component's own styles via cn(). Applies to the outer wrapper, add your own padding to the children.",

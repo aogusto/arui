@@ -212,6 +212,46 @@ Colors are defined in `oklch()` for perceptual uniformity; dark mode flips via t
 | Information, default interactive tint | `primary` (shadcn default) or `hig-accent` |
 | Premium, purchases | `indigo` / `purple` |
 
+### 3.5 Theming the accent color
+
+Wrap the app once in `AruiThemeProvider` (from `@aogusto/arui`) to swap the accent used
+everywhere, instead of hand-editing tokens component by component:
+
+```tsx
+import { AruiThemeProvider } from "@aogusto/arui"
+
+<AruiThemeProvider tint="pink">
+  <App />
+</AruiThemeProvider>
+```
+
+`tint` accepts a named preset (`blue`, `indigo`, `violet`, `pink`, `rose`, `green`,
+`teal`, `orange`, `red`) or any CSS color (hex, `rgb()`, `oklch()`). It sets
+`--primary`, `--ring`, and `--glass-tint`, and computes a contrasting
+`--primary-foreground` from the tint's luminance so text on a primary-colored surface
+stays legible whether the tint is light or dark.
+
+One tint reaches three places: the default `Button` fill and the shared focus ring
+(section 3.2), a `GlassSurface` with `tint="accent"` (section 2.2), and the animated
+glass pill behind the active tab in `Tabs` `variant="glass"` (section 9.4), so a
+themed app's glassmorphism surfaces and its controls read as one system instead of a
+tinted button next to untinted glass.
+
+For a CSS-only setup with no React context, set the same three custom properties
+directly in `:root`:
+
+```css
+:root {
+  --primary: #ec4899;
+  --ring: #ec4899;
+  --glass-tint: rgb(236, 72, 153);
+}
+```
+
+For a scoped preview (a theme picker, a demo panel) rather than the whole app, call
+`applyAruiTint(tint, target)` with an explicit target element instead of relying on
+the default `document.documentElement`, so only that subtree retints.
+
 ---
 
 ## 4. Typography
@@ -488,7 +528,8 @@ action menus (trigger click, right-click, and a persistent menu bar, respectivel
 
 ### 9.4 Navigation
 
-`Tabs` family (`tabsListVariants` supports a segmented look) for switching between
+`Tabs` family (`tabsListVariants` supports a segmented look, plus a `glass` variant with
+an animated tinted pill behind the active tab, see section 3.5) for switching between
 sibling views in place. `NavigationMenu` family for a top-level marketing/app nav with
 flyouts. `Breadcrumb` family for hierarchical location. `Pagination` family for paged
 lists/tables. `Sidebar` family (`Sidebar`, `SidebarProvider`, `SidebarMenu*`,

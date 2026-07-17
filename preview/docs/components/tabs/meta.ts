@@ -31,9 +31,9 @@ export const tabsProps: PropRow[] = [
 export const tabsListProps: PropRow[] = [
   {
     prop: "variant",
-    type: '"default" | "line" | "segmented"',
+    type: '"default" | "line" | "segmented" | "glass"',
     default: '"default"',
-    description: "Visual style of the tab list: a filled pill background, an underline under the active tab, or a frosted segmented control.",
+    description: "Visual style of the tab list: a filled pill background, an underline under the active tab, a frosted segmented control, or a glass material with an animated tinted pill behind the active tab.",
   },
   {
     prop: "className",
