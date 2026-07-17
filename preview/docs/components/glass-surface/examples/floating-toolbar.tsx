@@ -6,16 +6,16 @@ export default function Example() {
     <div className="relative flex w-full items-end justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-indigo to-purple p-10">
       <GlassSurface variant="regular" className="rounded-full">
         <div className="flex items-center gap-1 p-2">
-          <Button size="icon" variant="ghost" className="text-white hover:bg-white/15 hover:text-white" aria-label="Home">
+          <Button size="icon" variant="ghost" aria-label="Home">
             <Home />
           </Button>
-          <Button size="icon" variant="ghost" className="text-white hover:bg-white/15 hover:text-white" aria-label="Search">
+          <Button size="icon" variant="ghost" aria-label="Search">
             <Search />
           </Button>
-          <Button size="icon" variant="ghost" className="text-white hover:bg-white/15 hover:text-white" aria-label="Notifications">
+          <Button size="icon" variant="ghost" aria-label="Notifications">
             <Bell />
           </Button>
-          <Button size="icon" variant="ghost" className="text-white hover:bg-white/15 hover:text-white" aria-label="Profile">
+          <Button size="icon" variant="ghost" aria-label="Profile">
             <User />
           </Button>
         </div>

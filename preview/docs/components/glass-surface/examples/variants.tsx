@@ -8,20 +8,20 @@ export default function Example() {
       <div className="relative flex flex-wrap items-center justify-center gap-4">
         <GlassSurface variant="regular">
           <div className="w-40 space-y-1 p-4 text-center">
-            <p className="text-subhead font-semibold text-white">Regular</p>
-            <p className="text-caption-2 text-white/70">Default panel material</p>
+            <p className="text-subhead font-semibold text-foreground">Regular</p>
+            <p className="text-caption-2 text-foreground/70">Default panel material</p>
           </div>
         </GlassSurface>
         <GlassSurface variant="thick">
           <div className="w-40 space-y-1 p-4 text-center">
-            <p className="text-subhead font-semibold text-white">Thick</p>
-            <p className="text-caption-2 text-white/70">More opaque, higher contrast</p>
+            <p className="text-subhead font-semibold text-foreground">Thick</p>
+            <p className="text-caption-2 text-foreground/70">More opaque, higher contrast</p>
           </div>
         </GlassSurface>
         <GlassSurface variant="clear">
           <div className="w-40 space-y-1 p-4 text-center">
-            <p className="text-subhead font-semibold text-white">Clear</p>
-            <p className="text-caption-2 text-white/70">Most transparent, pairs with dim</p>
+            <p className="text-subhead font-semibold text-foreground">Clear</p>
+            <p className="text-caption-2 text-foreground/70">Most transparent, pairs with dim</p>
           </div>
         </GlassSurface>
       </div>

@@ -7,18 +7,14 @@ export default function Example() {
         <GlassSurface variant="regular" className="overflow-hidden">
           <div className="space-y-4 p-6">
             <div className="space-y-1">
-              <h3 className="text-headline font-semibold text-white">Update available</h3>
-              <p className="text-subhead text-white/80">
+              <h3 className="text-headline font-semibold text-foreground">Update available</h3>
+              <p className="text-subhead text-foreground/80">
                 A new version is ready to install. Restart to apply it.
               </p>
             </div>
             <div className="flex gap-2">
               <Button size="sm">Restart now</Button>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="text-white hover:bg-white/15 hover:text-white"
-              >
+              <Button size="sm" variant="ghost">
                 Later
               </Button>
             </div>
