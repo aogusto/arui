@@ -1,8 +1,10 @@
+import { useState } from "react"
 import { Link, Outlet } from "@tanstack/react-router"
-import { Sheet, SheetContent, SheetTrigger, Button } from "@aogusto/arui"
-import { Menu } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger, Button, Kbd, KbdGroup } from "@aogusto/arui"
+import { Menu, Search } from "lucide-react"
 import { useTheme } from "../lib/useTheme"
 import { ThemeToggle } from "../components/ThemeToggle"
+import { CommandMenu } from "./CommandMenu"
 import { DOCS_REGISTRY, DOCS_CATEGORIES } from "./registry"
 
 function SidebarNav() {
@@ -31,8 +33,10 @@ function SidebarNav() {
 
 export function DocsLayout() {
   const { theme, toggle } = useTheme()
+  const [commandOpen, setCommandOpen] = useState(false)
   return (
     <div className="min-h-dvh bg-background text-foreground">
+      <CommandMenu open={commandOpen} onOpenChange={setCommandOpen} />
       <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b border-separator bg-background/80 px-4 backdrop-blur-glass">
         <Sheet>
           <SheetTrigger asChild>
@@ -45,6 +49,29 @@ export function DocsLayout() {
           </SheetContent>
         </Sheet>
         <Link to="/" className="text-headline font-semibold">arui</Link>
+        <Button
+          variant="outline"
+          onClick={() => setCommandOpen(true)}
+          className="ml-4 hidden w-64 items-center justify-between text-label-tertiary sm:flex"
+        >
+          <span className="flex items-center gap-2 text-subhead">
+            <Search className="size-4" />
+            Search
+          </span>
+          <KbdGroup>
+            <Kbd>⌘</Kbd>
+            <Kbd>K</Kbd>
+          </KbdGroup>
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setCommandOpen(true)}
+          className="ml-4 sm:hidden"
+          aria-label="Search components"
+        >
+          <Search className="size-5" />
+        </Button>
         <div className="ml-auto flex items-center gap-1">
           <a href="https://www.npmjs.com/package/@aogusto/arui" className="rounded-md px-2 py-1 text-subhead text-label-secondary hover:text-label">npm</a>
           <a href="https://github.com/aogusto/arui" className="rounded-md px-2 py-1 text-subhead text-label-secondary hover:text-label">GitHub</a>
