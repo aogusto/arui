@@ -22,15 +22,13 @@ function PaginationContent({
   children,
   ...props
 }: React.ComponentProps<"ul">) {
-  const contentRef = React.useRef<HTMLUListElement>(null)
-  const { geometry } = useGlassHighlight({
-    containerRef: contentRef,
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: '[aria-current="page"]',
   })
 
   return (
     <ul
-      ref={contentRef}
+      ref={pillRef}
       data-slot="pagination-content"
       className={cn("relative flex items-center gap-1", className)}
       {...props}

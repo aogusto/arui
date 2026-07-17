@@ -24,11 +24,9 @@ export interface PillGeometry {
 }
 
 export interface UseGlassHighlightOptions {
-  /** container que hospeda os itens (coordinate frame; precisa ser position:relative) */
-  containerRef: React.RefObject<HTMLElement | null>
   /** seletor CSS do item ativo/destacado, ex: '[data-highlighted]', '[data-state="active"]' */
   activeSelector: string
-  /** quando o nó de medição não é o próprio containerRef (ex: [cmdk-list-sizer]) */
+  /** quando o nó de medição não é o próprio nó do callback ref (ex: [cmdk-list-sizer]) */
   resolveContainer?: (root: HTMLElement) => HTMLElement | null
   /** 'offset' (default, scroll-safe) ou 'rect' quando há wrapper relative intermediário */
   measure?: "offset" | "rect"
@@ -50,9 +48,8 @@ function attrFilterFrom(selector: string): string[] | undefined {
 
 export function useGlassHighlight(
   options: UseGlassHighlightOptions
-): { geometry: PillGeometry | null } {
+): { ref: (node: HTMLElement | null) => void; geometry: PillGeometry | null } {
   const {
-    containerRef,
     activeSelector,
     resolveContainer,
     measure = "offset",
@@ -60,15 +57,12 @@ export function useGlassHighlight(
     enabled = true,
     deps = [],
   } = options
+  const [root, setRoot] = React.useState<HTMLElement | null>(null)
+  const ref = React.useCallback((node: HTMLElement | null) => setRoot(node), [])
   const [geometry, setGeometry] = React.useState<PillGeometry | null>(null)
 
   React.useLayoutEffect(() => {
-    if (!enabled || typeof document === "undefined") {
-      setGeometry(null)
-      return
-    }
-    const root = containerRef.current
-    if (!root) {
+    if (!enabled || !root || typeof document === "undefined") {
       setGeometry(null)
       return
     }
@@ -120,9 +114,9 @@ export function useGlassHighlight(
       window.removeEventListener("resize", measureNow)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [containerRef, activeSelector, resolveContainer, measure, matchRadius, enabled, ...deps])
+  }, [root, activeSelector, resolveContainer, measure, matchRadius, enabled, ...deps])
 
-  return { geometry }
+  return { ref, geometry }
 }
 
 export function GlassPill({

@@ -443,16 +443,14 @@ function SidebarGroupContent({
 }
 
 function SidebarMenu({ className, children, ...props }: React.ComponentProps<"ul">) {
-  const menuRef = React.useRef<HTMLUListElement>(null)
-  const { geometry } = useGlassHighlight({
-    containerRef: menuRef,
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: '[data-sidebar="menu-button"][data-active="true"]',
     measure: "rect",
   })
 
   return (
     <ul
-      ref={menuRef}
+      ref={pillRef}
       data-slot="sidebar-menu"
       data-sidebar="menu"
       className={cn("relative flex w-full min-w-0 flex-col gap-1", className)}
@@ -629,16 +627,14 @@ function SidebarMenuSkeleton({
 }
 
 function SidebarMenuSub({ className, children, ...props }: React.ComponentProps<"ul">) {
-  const subRef = React.useRef<HTMLUListElement>(null)
-  const { geometry } = useGlassHighlight({
-    containerRef: subRef,
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: '[data-sidebar="menu-sub-button"][data-active="true"]',
     measure: "rect",
   })
 
   return (
     <ul
-      ref={subRef}
+      ref={pillRef}
       data-slot="sidebar-menu-sub"
       data-sidebar="menu-sub"
       className={cn(

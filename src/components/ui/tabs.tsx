@@ -50,16 +50,14 @@ function TabsList({
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List> & VariantProps<typeof tabsListVariants>) {
   const resolved: TabsVariant = variant ?? "default"
-  const listRef = React.useRef<HTMLDivElement>(null)
-  const { geometry } = useGlassHighlight({
-    containerRef: listRef,
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: '[data-state="active"]',
     measure: "rect",
     enabled: resolved === "glass",
   })
   return (
     <TabsPrimitive.List
-      ref={listRef}
+      ref={pillRef}
       data-slot="tabs-list"
       data-variant={resolved}
       className={cn(tabsListVariants({ variant: resolved }), className)}

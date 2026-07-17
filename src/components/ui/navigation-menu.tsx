@@ -36,17 +36,15 @@ function NavigationMenuList({
   children,
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.List>) {
-  const listRef = React.useRef<HTMLUListElement>(null)
   // Pattern A: NavigationMenuItem já é position:relative → measure "rect".
   // O item ativo do Radix é o Link com data-active (presença), não um valor.
-  const { geometry } = useGlassHighlight({
-    containerRef: listRef,
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: "[data-active]",
     measure: "rect",
   })
   return (
     <NavigationMenuPrimitive.List
-      ref={listRef}
+      ref={pillRef}
       data-slot="navigation-menu-list"
       className={cn(
         "group relative flex flex-1 list-none items-center justify-center gap-0",

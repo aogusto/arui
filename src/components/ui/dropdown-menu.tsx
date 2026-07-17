@@ -40,28 +40,18 @@ function DropdownMenuContent({
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
-  // Content é gated por Presence (Radix): no primeiro commit em que abre, o nó
-  // real ainda não existe quando o useLayoutEffect do hook roda — containerRef
-  // fica nulo e, como as deps do hook não mudam sozinhas, ele nunca tentaria de
-  // novo. O callback ref abaixo dispara um tick assim que o nó anexa (ou troca),
-  // entrando em `deps` do hook pra forçar a remedição.
-  const contentRef = React.useRef<HTMLDivElement>(null)
-  const [mountedTick, setMountedTick] = React.useState(0)
-  const setContentRef = React.useCallback((node: HTMLDivElement | null) => {
-    contentRef.current = node
-    setMountedTick((n) => n + 1)
-  }, [])
   // Pattern B: o pill segue o item destacado (Radix marca com [data-highlighted]
   // em runtime, hover ou teclado) — uma instância por superfície independente.
-  const { geometry } = useGlassHighlight({
-    containerRef: contentRef,
+  // Content é gated por Presence (Radix): o nó real só existe algum tempo
+  // depois do primeiro commit. O callback ref do hook resolve isso na fonte —
+  // quando o Radix monta o Content, o ref dispara, o efeito re-roda e mede.
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: "[data-highlighted]",
-    deps: [mountedTick],
   })
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
-        ref={setContentRef}
+        ref={pillRef}
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         align={align}
@@ -267,23 +257,15 @@ function DropdownMenuSubContent({
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
-  // Mesmo fix de timing do Content acima: SubContent também é gated por
-  // Presence, então o ref só fica utilizável um tick depois do primeiro commit.
-  const subContentRef = React.useRef<HTMLDivElement>(null)
-  const [mountedTick, setMountedTick] = React.useState(0)
-  const setSubContentRef = React.useCallback((node: HTMLDivElement | null) => {
-    subContentRef.current = node
-    setMountedTick((n) => n + 1)
-  }, [])
-  // Superfície independente do Content pai — pill próprio, nunca compartilhado.
-  const { geometry } = useGlassHighlight({
-    containerRef: subContentRef,
+  // Mesmo fix de timing do Content acima (SubContent também é Presence-gated),
+  // resolvido na fonte pelo callback ref do hook. Superfície independente do
+  // Content pai — pill próprio, nunca compartilhado.
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: "[data-highlighted]",
-    deps: [mountedTick],
   })
   return (
     <DropdownMenuPrimitive.SubContent
-      ref={setSubContentRef}
+      ref={pillRef}
       data-slot="dropdown-menu-sub-content"
       className={cn("relative z-50 min-w-[96px] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-md p-1 text-popover-foreground duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 **:data-[slot$=-separator]:bg-foreground/5", glass.regular, className )}
       {...props}

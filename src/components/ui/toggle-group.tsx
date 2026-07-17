@@ -34,19 +34,17 @@ function ToggleGroup({
     spacing?: number
     orientation?: "horizontal" | "vertical"
   }) {
-  const rootRef = React.useRef<HTMLDivElement>(null)
   // Pill de vidro só faz sentido em single-select: em multiple, vários itens
   // podem estar "on" ao mesmo tempo e um pill único não representa isso.
   const isSingle = props.type === "single"
-  const { geometry } = useGlassHighlight({
-    containerRef: rootRef,
+  const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: '[data-state="on"]',
     enabled: isSingle,
   })
 
   return (
     <ToggleGroupPrimitive.Root
-      ref={rootRef}
+      ref={pillRef}
       data-slot="toggle-group"
       data-variant={variant}
       data-size={size}
