@@ -4,6 +4,6 @@ export const meta: { slug: string; name: string; category: DocCategory; descript
   slug: "button",
   name: "Button",
   category: "Forms & Inputs",
-  description: "A clickable button with intent variants and a range of sizes, including icon only sizes, with asChild support to render as another element.",
+  description: "A button with intent variants (default, outline, secondary, ghost, destructive, link) and a range of sizes. It supports icon-only sizes and an asChild prop to render as another element.",
   imports: ["Button"],
 }

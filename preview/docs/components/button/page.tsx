@@ -38,7 +38,12 @@ const props: PropRow[] = [
     description: "Disables the button.",
   },
   {
-    prop: "…props",
+    prop: "className",
+    type: "string",
+    description: "Additional classes, merged with the component's own styles via cn().",
+  },
+  {
+    prop: "...props",
     type: "React.ComponentProps<'button'>",
     description: "The remaining native <button> attributes (onClick, type, etc.).",
   },
