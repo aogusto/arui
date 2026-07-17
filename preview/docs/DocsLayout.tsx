@@ -8,8 +8,24 @@ import { CommandMenu } from "./CommandMenu"
 import { DOCS_REGISTRY, DOCS_CATEGORIES } from "./registry"
 
 function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
+  const guideLinkClass =
+    "block rounded-md px-2 py-1.5 text-label-secondary hover:bg-fill hover:text-label [&.active]:bg-fill [&.active]:font-medium [&.active]:text-label"
   return (
     <nav className="space-y-6 text-subhead">
+      <div className="space-y-1">
+        <p className="px-2 text-caption-1 font-semibold uppercase tracking-wide text-label-tertiary">
+          Guides
+        </p>
+        <Link to="/docs" onClick={onNavigate} activeOptions={{ exact: true }} className={guideLinkClass}>
+          Getting started
+        </Link>
+        <Link to="/docs/design" onClick={onNavigate} className={guideLinkClass}>
+          Design guide
+        </Link>
+        <Link to="/docs/mcp" onClick={onNavigate} className={guideLinkClass}>
+          AI agents (MCP)
+        </Link>
+      </div>
       {DOCS_CATEGORIES.map((cat) => (
         <div key={cat} className="space-y-1">
           <p className="px-2 text-caption-1 font-semibold uppercase tracking-wide text-label-tertiary">

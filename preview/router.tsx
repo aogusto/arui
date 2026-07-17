@@ -3,6 +3,8 @@ import { HomePage } from "./pages/HomePage"
 import { DocsLayout } from "./docs/DocsLayout"
 import { GettingStarted } from "./docs/GettingStarted"
 import { ComponentDocPage } from "./docs/ComponentDocPage"
+import { McpPage } from "./docs/McpPage"
+import { DesignPage } from "./docs/DesignPage"
 
 export const rootRoute = createRootRoute({ component: () => <Outlet /> })
 
@@ -30,9 +32,21 @@ const componentRoute = createRoute({
   component: ComponentDocPage,
 })
 
+const mcpRoute = createRoute({
+  getParentRoute: () => docsRoute,
+  path: "mcp",
+  component: McpPage,
+})
+
+const designRoute = createRoute({
+  getParentRoute: () => docsRoute,
+  path: "design",
+  component: DesignPage,
+})
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
-  docsRoute.addChildren([docsIndexRoute, componentRoute]),
+  docsRoute.addChildren([docsIndexRoute, mcpRoute, designRoute, componentRoute]),
 ])
 
 export const router = createRouter({ routeTree })
