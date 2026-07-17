@@ -68,9 +68,15 @@ export function useGlassHighlight(
       return
     }
     const root = containerRef.current
-    if (!root) return
+    if (!root) {
+      setGeometry(null)
+      return
+    }
     const container = resolveContainer ? resolveContainer(root) : root
-    if (!container) return
+    if (!container) {
+      setGeometry(null)
+      return
+    }
 
     const measureNow = () => {
       const item = container.querySelector<HTMLElement>(activeSelector)
