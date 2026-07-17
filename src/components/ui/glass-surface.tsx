@@ -52,7 +52,7 @@ function GlassSurface({
         {tintColor && (
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-[inherit]"
+            className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit]"
             style={{ backgroundColor: tintColor, opacity: 0.16 }}
           />
         )}
