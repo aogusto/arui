@@ -115,7 +115,7 @@ export function ThemingPage() {
         <p className="text-caption-1 font-semibold uppercase tracking-wide text-label-tertiary">Guides</p>
         <h1 className="text-title-1 font-bold text-label">Theming</h1>
         <p className="text-body text-label-secondary">
-          arui defaults to a neutral primary color, but every app can pick its own accent with a
+          arui ships with a blue primary by default, but every app can pick its own accent with a
           single prop. Wrap your app in <code className="font-mono text-caption-1">AruiThemeProvider</code>{" "}
           with a <code className="font-mono text-caption-1">tint</code>, and the primary color, the
           focus ring, and the glass materials all follow it.

@@ -39,7 +39,7 @@ function GlassSurface({
   children,
   ...props
 }: GlassSurfaceProps) {
-  const tintColor = tint === "accent" ? "var(--primary)" : tint
+  const tintColor = tint === "accent" ? "var(--glass-tint, var(--primary))" : tint
   return (
     <div className={cn("relative isolate rounded-2xl", className)} {...props}>
       {dim && variant === "clear" && (

@@ -306,7 +306,6 @@
     /* Glass material channels (RGB triplets) */
     --glass-regular: 255 255 255;
     --glass-clear:   255 255 255;
-    --glass-tint: transparent;
 }
 
 .dark {

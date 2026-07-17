@@ -90,7 +90,7 @@ function TabsList({
 
 // Active-item lens for the glass variant: a translucent tint of --primary plus glass shine.
 const GLASS_PILL_STYLE: React.CSSProperties = {
-  background: "color-mix(in oklch, var(--primary) 22%, transparent)",
+  background: "color-mix(in oklch, var(--glass-tint, var(--primary)) 22%, transparent)",
   boxShadow: "var(--shadow-glass-sm)",
 }
 
