@@ -32,7 +32,7 @@ export const NAV_LINKS = [
   { href: "#install", label: "Install" },
 ] as const
 
-export const HERO_INSTALL = `npm install arui`
+export const HERO_INSTALL = `npm install @aogusto/arui`
 
 // Install flow: o pacote, depois duas linhas de CSS na ordem. A ordem importa
 // (o @source precisa do theme já importado), então numerar é honesto.
@@ -42,21 +42,21 @@ export const INSTALL_STEPS = [
     n: 1,
     title: "Install the package",
     body: "One dependency. React 19 and Tailwind CSS v4 are peers you already have.",
-    command: `npm install arui`,
+    command: `npm install @aogusto/arui`,
     kind: "shell",
   },
   {
     n: 2,
     title: "Import the theme",
     body: "The HIG tokens, easings, dark variant and Inter — self-contained in one stylesheet. Add it to your app CSS.",
-    command: `@import "arui/theme.css";`,
+    command: `@import "@aogusto/arui/theme.css";`,
     kind: "css",
   },
   {
     n: 3,
     title: "Let Tailwind see the components",
     body: "Point Tailwind at the package so it generates the utilities the components use. Without this line the components render unstyled.",
-    command: `@source "../node_modules/arui/dist";`,
+    command: `@source "../node_modules/@aogusto/arui/dist";`,
     kind: "css",
   },
 ] as const

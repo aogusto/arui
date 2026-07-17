@@ -1,4 +1,4 @@
-// arui — barrel público. Import via `import { Button } from "arui"`.
+// arui — barrel público. Import via `import { Button } from "@aogusto/arui"`.
 
 // Utilitário de classes (tailwind-merge com type scale HIG)
 export { cn } from "@/lib/utils"

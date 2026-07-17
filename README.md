@@ -10,7 +10,7 @@ v4 generates the rest.
 ## Instalação
 
 ```bash
-npm install arui
+npm install @aogusto/arui
 ```
 
 `arui` assume **React 19** e **Tailwind 4** (peerDependencies).
@@ -21,17 +21,17 @@ No CSS da sua app:
 
 ```css
 @import "tailwindcss";
-@import "arui/theme.css";
-@source "../node_modules/arui/dist";
+@import "@aogusto/arui/theme.css";
+@source "../node_modules/@aogusto/arui/dist";
 ```
 
-- `arui/theme.css` traz os tokens HIG, o `dark` variant e a fonte Inter — já self-contained.
+- `@aogusto/arui/theme.css` traz os tokens HIG, o `dark` variant e a fonte Inter — já self-contained.
 - O `@source` é **obrigatório**: sem ele o Tailwind não escaneia `node_modules` e as classes dos componentes não geram CSS. Ajuste o caminho relativo à localização do seu arquivo CSS.
 
 ### Uso
 
 ```tsx
-import { Button, Card, Sheet } from "arui"
+import { Button, Card, Sheet } from "@aogusto/arui"
 
 export function Example() {
   return <Button>Olá</Button>
@@ -50,7 +50,7 @@ Validação com zod é escolha sua (`zod` + `@hookform/resolvers`) — a arui n�
 
 ## Components
 
-57 components, exported flat from the package root (`import { X } from "arui"`), plus the
+57 components, exported flat from the package root (`import { X } from "@aogusto/arui"`), plus the
 `cn()` class-merge utility and the `useIsMobile` hook.
 
 | Group | Components |
@@ -74,7 +74,7 @@ import {
   Button,
   Dialog, DialogTrigger, DialogContent, DialogHeader,
   DialogTitle, DialogDescription, DialogFooter, DialogClose,
-} from "arui"
+} from "@aogusto/arui"
 
 export default function Example() {
   return (
@@ -114,7 +114,7 @@ import { z } from "zod"
 import {
   Button, Input,
   Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage,
-} from "arui"
+} from "@aogusto/arui"
 
 const schema = z.object({
   email: z.string().email("Enter a valid email"),

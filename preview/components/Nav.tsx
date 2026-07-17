@@ -1,4 +1,4 @@
-import { GlassSurface, Button } from "arui"
+import { GlassSurface, Button } from "@aogusto/arui"
 import { cn } from "@/lib/utils"
 import { NAV_LINKS, SITE } from "../showcase"
 import { GitHubMark, Wordmark } from "./icons"

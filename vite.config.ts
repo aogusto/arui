@@ -12,7 +12,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       // dogfood: o showcase importa pelo caminho público real, resolvido no source
-      arui: path.resolve(__dirname, "./src/index.ts"),
+      "@aogusto/arui": path.resolve(__dirname, "./src/index.ts"),
     },
   },
 })

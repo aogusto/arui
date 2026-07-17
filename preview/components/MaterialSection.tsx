@@ -1,4 +1,4 @@
-import { GlassSurface } from "arui"
+import { GlassSurface } from "@aogusto/arui"
 import { MATERIALS } from "../showcase"
 import { DriftingPhotos } from "./DriftingPhotos"
 import { Reveal } from "./Reveal"

@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react"
-import { Button } from "arui"
+import { Button } from "@aogusto/arui"
 import { cn } from "@/lib/utils"
 import { SITE } from "../showcase"
 import { GitHubMark, Wordmark } from "./icons"

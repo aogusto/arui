@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from "arui"
+} from "@aogusto/arui"
 import { INSTALL_STEPS } from "../showcase"
 import { CommandRow } from "./CommandRow"
 import { Reveal } from "./Reveal"
@@ -72,7 +72,7 @@ export function InstallSection() {
               </code>{" "}
               pulls in the glass surface it depends on, nothing more.{" "}
               <code className="rounded-md bg-fill px-1.5 py-0.5 font-mono text-caption-1 text-label">
-                arui/theme.css
+                @aogusto/arui/theme.css
               </code>{" "}
               already brings the font and animations, so there's nothing else
               to wire up.

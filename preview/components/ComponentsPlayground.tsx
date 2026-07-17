@@ -43,7 +43,7 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from "arui"
+} from "@aogusto/arui"
 
 import { DragCard } from "./DragCard"
 import { Reveal } from "./Reveal"

@@ -1,7 +1,7 @@
 import type { ReactNode, RefObject } from "react"
 import { motion, useDragControls, useReducedMotion } from "framer-motion"
 import { GripVertical } from "lucide-react"
-import { glass } from "arui"
+import { glass } from "@aogusto/arui"
 import { cn } from "@/lib/utils"
 
 type DragCardProps = {
