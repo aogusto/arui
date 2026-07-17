@@ -28,15 +28,18 @@ const glass = {
 type GlassSurfaceProps = React.HTMLAttributes<HTMLDivElement> & {
   variant?: "regular" | "thick" | "clear"
   dim?: boolean
+  tint?: "accent" | (string & {})
 }
 
 function GlassSurface({
   variant = "regular",
   dim = false,
+  tint,
   className,
   children,
   ...props
 }: GlassSurfaceProps) {
+  const tintColor = tint === "accent" ? "var(--primary)" : tint
   return (
     <div className={cn("relative isolate rounded-2xl", className)} {...props}>
       {dim && variant === "clear" && (
@@ -45,7 +48,16 @@ function GlassSurface({
           className="absolute inset-0 rounded-[inherit] bg-black/35"
         />
       )}
-      <div className={cn("rounded-[inherit]", glass[variant])}>{children}</div>
+      <div className={cn("relative rounded-[inherit]", glass[variant])}>
+        {tintColor && (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-[inherit]"
+            style={{ backgroundColor: tintColor, opacity: 0.16 }}
+          />
+        )}
+        {children}
+      </div>
     </div>
   )
 }
