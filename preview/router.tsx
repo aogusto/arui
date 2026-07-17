@@ -1,5 +1,7 @@
 import { createRootRoute, createRoute, createRouter, Outlet } from "@tanstack/react-router"
 import { HomePage } from "./pages/HomePage"
+import { DocsLayout } from "./docs/DocsLayout"
+import { GettingStarted } from "./docs/GettingStarted"
 
 export const rootRoute = createRootRoute({ component: () => <Outlet /> })
 
@@ -9,9 +11,23 @@ const homeRoute = createRoute({
   component: HomePage,
 })
 
-// docsRoute e suas filhas são anexadas nas Tasks 2/3 via routeTree abaixo.
-// Task 2 exporta docsRoute e docsChildren; aqui deixamos a home pronta.
-const routeTree = rootRoute.addChildren([homeRoute])
+export const docsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "docs",
+  component: DocsLayout,
+})
+
+const docsIndexRoute = createRoute({
+  getParentRoute: () => docsRoute,
+  path: "/",
+  component: GettingStarted,
+})
+
+// Task 3 adiciona componentRoute como filha de docsRoute.
+const routeTree = rootRoute.addChildren([
+  homeRoute,
+  docsRoute.addChildren([docsIndexRoute]),
+])
 
 export const router = createRouter({ routeTree })
 
