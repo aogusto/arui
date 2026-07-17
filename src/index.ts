@@ -6,6 +6,10 @@ export { cn } from "@/lib/utils"
 // Hooks
 export { useIsMobile } from "@/hooks/use-mobile"
 
+// Theme
+export { AruiThemeProvider, applyAruiTint } from "@/components/theme/aruiThemeProvider"
+export type { AruiTint } from "@/components/theme/aruiThemeProvider"
+
 // Componentes
 export * from "@/components/ui/accordion"
 export * from "@/components/ui/alert"
