@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, providerProps, tooltipProps, triggerProps, contentProps } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -11,61 +11,6 @@ import WithIcon from "./examples/with-icon"
 import withIconCode from "./examples/with-icon.tsx?raw"
 import DelayDuration from "./examples/delay-duration"
 import delayDurationCode from "./examples/delay-duration.tsx?raw"
-
-const providerProps: PropRow[] = [
-  {
-    prop: "delayDuration",
-    type: "number",
-    default: "0",
-    description: "Time in milliseconds the trigger must be hovered or focused before the tooltip opens.",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TooltipPrimitive.Provider>",
-    description: "Extends Provider from radix-ui (skipDelayDuration, disableHoverableContent, etc). Wrap it once near the root to share timing across every tooltip.",
-  },
-]
-
-const tooltipProps: PropRow[] = [
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TooltipPrimitive.Root>",
-    description: "Extends Root from radix-ui (open, defaultOpen, onOpenChange, delayDuration). Controls the open state of a single tooltip instance.",
-  },
-]
-
-const triggerProps: PropRow[] = [
-  {
-    prop: "asChild",
-    type: "boolean",
-    default: "false",
-    description: "Merges its props onto the child element instead of rendering its own node.",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TooltipPrimitive.Trigger>",
-    description: "Extends Trigger from radix-ui.",
-  },
-]
-
-const contentProps: PropRow[] = [
-  {
-    prop: "sideOffset",
-    type: "number",
-    default: "0",
-    description: "Distance in pixels between the trigger and the tooltip.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TooltipPrimitive.Content>",
-    description: "Extends Content from radix-ui (side, align, alignOffset, avoidCollisions, etc). Rendered in a Portal on top of a glass surface.",
-  },
-]
 
 export default function TooltipDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

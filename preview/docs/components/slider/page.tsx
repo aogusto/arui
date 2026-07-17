@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -15,80 +15,6 @@ import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
 import WithLabel from "./examples/with-label"
 import withLabelCode from "./examples/with-label.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "value",
-    type: "number[]",
-    description: "Controlled value(s). A single number renders one thumb; two numbers render a range with two thumbs. Use with onValueChange.",
-  },
-  {
-    prop: "defaultValue",
-    type: "number[]",
-    description: "Initial value(s) for uncontrolled usage.",
-  },
-  {
-    prop: "onValueChange",
-    type: "(value: number[]) => void",
-    description: "Called continuously while a thumb is being dragged.",
-  },
-  {
-    prop: "onValueCommit",
-    type: "(value: number[]) => void",
-    description: "Called once when the thumb is released.",
-  },
-  {
-    prop: "min",
-    type: "number",
-    default: "0",
-    description: "Minimum value of the track.",
-  },
-  {
-    prop: "max",
-    type: "number",
-    default: "100",
-    description: "Maximum value of the track.",
-  },
-  {
-    prop: "step",
-    type: "number",
-    default: "1",
-    description: "Step increment for value changes.",
-  },
-  {
-    prop: "minStepsBetweenThumbs",
-    type: "number",
-    default: "0",
-    description: "Minimum number of steps enforced between thumbs on a range slider.",
-  },
-  {
-    prop: "orientation",
-    type: '"horizontal" | "vertical"',
-    default: '"horizontal"',
-    description: "Layout axis of the track and thumbs.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables the slider and prevents interaction.",
-  },
-  {
-    prop: "name",
-    type: "string",
-    description: "Name submitted with the form data.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SliderPrimitive.Root>",
-    description: "Extends Slider.Root from radix-ui.",
-  },
-]
 
 export default function SliderDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

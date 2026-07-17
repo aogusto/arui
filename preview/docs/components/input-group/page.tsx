@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, inputGroupProps, addonProps, buttonProps, textProps, inputProps, textareaProps } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -15,102 +15,6 @@ import Textarea from "./examples/textarea"
 import textareaCode from "./examples/textarea.tsx?raw"
 import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
-
-const inputGroupProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "The remaining native <div> attributes. Rendered with role=\"group\"; wraps the field (InputGroupInput / InputGroupTextarea) and its addons.",
-  },
-]
-
-const addonProps: PropRow[] = [
-  {
-    prop: "align",
-    type: '"inline-start" | "inline-end" | "block-start" | "block-end"',
-    default: '"inline-start"',
-    description: "Position of the addon: inline on either side of the field, or as a full width bar above/below it.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "The remaining native <div> attributes. Rendered with role=\"group\"; clicking it focuses the adjacent field.",
-  },
-]
-
-const buttonProps: PropRow[] = [
-  {
-    prop: "variant",
-    type: '"default" | "outline" | "secondary" | "ghost" | "destructive" | "link"',
-    default: '"ghost"',
-    description: "Visual style, inherited from Button.",
-  },
-  {
-    prop: "size",
-    type: '"xs" | "sm" | "icon-xs" | "icon-sm"',
-    default: '"xs"',
-    description: "Size tuned to sit inside an addon, including icon only sizes.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "Omit<React.ComponentProps<typeof Button>, 'size'>",
-    description: "Extends Button (asChild, disabled, onClick, type, etc.), minus its own size prop.",
-  },
-]
-
-const textProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'span'>",
-    description: "The remaining native <span> attributes. Use for plain text affixes such as $, .dev, or a character count.",
-  },
-]
-
-const inputProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'input'>",
-    description: "The remaining native <input> attributes. Renders as Input, borderless and transparent so it blends into the group.",
-  },
-]
-
-const textareaProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'textarea'>",
-    description: "The remaining native <textarea> attributes. Renders as Textarea, borderless, transparent, and non resizable.",
-  },
-]
 
 export default function InputGroupDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

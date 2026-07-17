@@ -1,7 +1,17 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import {
+  meta,
+  sheetProps,
+  sheetTriggerProps,
+  sheetContentProps,
+  sheetHeaderProps,
+  sheetFooterProps,
+  sheetTitleProps,
+  sheetDescriptionProps,
+  sheetCloseProps,
+} from "./meta"
 
 import Sides from "./examples/sides"
 import sidesCode from "./examples/sides.tsx?raw"
@@ -11,107 +21,6 @@ import CustomWidth from "./examples/custom-width"
 import customWidthCode from "./examples/custom-width.tsx?raw"
 import NoCloseButton from "./examples/no-close-button"
 import noCloseButtonCode from "./examples/no-close-button.tsx?raw"
-
-const sheetProps: PropRow[] = [
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SheetPrimitive.Root>",
-    description: "Extends Dialog.Root from radix-ui (open, defaultOpen, onOpenChange, modal).",
-  },
-]
-
-const sheetTriggerProps: PropRow[] = [
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SheetPrimitive.Trigger>",
-    description: "Extends Dialog.Trigger from radix-ui. Renders a button by default; pass asChild to render your own trigger element instead.",
-  },
-]
-
-const sheetContentProps: PropRow[] = [
-  {
-    prop: "side",
-    type: '"top" | "right" | "bottom" | "left"',
-    default: '"right"',
-    description: "Edge of the screen the panel slides in from. Controls position, size, entry border and animation direction.",
-  },
-  {
-    prop: "showCloseButton",
-    type: "boolean",
-    default: "true",
-    description: "Renders the built in close button (an icon Button) pinned to the top right corner.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SheetPrimitive.Content>",
-    description: "Extends Dialog.Content from radix-ui. Rendered inside a SheetPortal, right after a SheetOverlay.",
-  },
-]
-
-const sheetHeaderProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "The remaining native <div> attributes.",
-  },
-]
-
-const sheetFooterProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "The remaining native <div> attributes. Uses mt-auto so it sticks to the bottom of the panel regardless of content length.",
-  },
-]
-
-const sheetTitleProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SheetPrimitive.Title>",
-    description: "Extends Dialog.Title from radix-ui.",
-  },
-]
-
-const sheetDescriptionProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SheetPrimitive.Description>",
-    description: "Extends Dialog.Description from radix-ui.",
-  },
-]
-
-const sheetCloseProps: PropRow[] = [
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SheetPrimitive.Close>",
-    description: "Extends Dialog.Close from radix-ui. Renders a button that closes the sheet; pass asChild to render your own element.",
-  },
-]
 
 export default function SheetDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

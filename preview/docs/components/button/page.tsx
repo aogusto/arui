@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Variants from "./examples/variants"
 import variantsCode from "./examples/variants.tsx?raw"
@@ -11,43 +11,6 @@ import WithIcon from "./examples/with-icon"
 import withIconCode from "./examples/with-icon.tsx?raw"
 import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "variant",
-    type: '"default" | "outline" | "secondary" | "ghost" | "destructive" | "link"',
-    default: '"default"',
-    description: "Visual style and intent of the button.",
-  },
-  {
-    prop: "size",
-    type: '"default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg"',
-    default: '"default"',
-    description: "Size of the button, including icon only sizes for icon buttons.",
-  },
-  {
-    prop: "asChild",
-    type: "boolean",
-    default: "false",
-    description: "Renders the child as the root element (via Slot), inheriting the button styles.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables the button.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'button'>",
-    description: "The remaining native <button> attributes (onClick, type, etc.).",
-  },
-]
 
 export default function ButtonDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

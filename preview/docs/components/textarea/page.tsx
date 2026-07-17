@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -9,19 +9,6 @@ import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
 import WithLabel from "./examples/with-label"
 import withLabelCode from "./examples/with-label.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"textarea">',
-    description: "The remaining native <textarea> attributes (value, onChange, rows, placeholder, etc.).",
-  },
-]
 
 export default function TextareaDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

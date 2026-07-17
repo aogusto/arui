@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Variants from "./examples/variants"
 import variantsCode from "./examples/variants.tsx?raw"
@@ -11,31 +11,6 @@ import AsChild from "./examples/as-child"
 import asChildCode from "./examples/as-child.tsx?raw"
 import Invalid from "./examples/invalid"
 import invalidCode from "./examples/invalid.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "variant",
-    type: '"default" | "secondary" | "destructive" | "outline" | "ghost" | "link"',
-    default: '"default"',
-    description: "Visual style and intent of the badge.",
-  },
-  {
-    prop: "asChild",
-    type: "boolean",
-    default: "false",
-    description: "Renders the child as the root element (via Slot), inheriting the badge styles.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'span'>",
-    description: "The remaining native <span> attributes (aria-invalid, data-icon on children for leading/trailing icon spacing, etc.).",
-  },
-]
 
 export default function BadgeDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

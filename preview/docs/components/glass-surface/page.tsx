@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Variants from "./examples/variants"
 import variantsCode from "./examples/variants.tsx?raw"
@@ -13,31 +13,6 @@ import FloatingToolbar from "./examples/floating-toolbar"
 import floatingToolbarCode from "./examples/floating-toolbar.tsx?raw"
 import ActionBar from "./examples/action-bar"
 import actionBarCode from "./examples/action-bar.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "variant",
-    type: '"regular" | "thick" | "clear"',
-    default: '"regular"',
-    description: "Frosted material for the surface. Thick is more opaque and higher contrast; clear is the most transparent and pairs with dim.",
-  },
-  {
-    prop: "dim",
-    type: "boolean",
-    default: "false",
-    description: "Adds a dark scrim behind the surface so content stays legible on busy or bright backgrounds. Only applies when variant is clear.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn(). Applies to the outer wrapper, add your own padding to the children.",
-  },
-  {
-    prop: "...props",
-    type: "React.HTMLAttributes<HTMLDivElement>",
-    description: "The remaining native <div> attributes (id, onClick, style, etc.).",
-  },
-]
 
 export default function GlassSurfaceDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

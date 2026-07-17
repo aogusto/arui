@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, buttonGroupProps, buttonGroupTextProps, buttonGroupSeparatorProps } from "./meta"
 
 import Variants from "./examples/variants"
 import variantsCode from "./examples/variants.tsx?raw"
@@ -13,63 +13,6 @@ import WithSeparator from "./examples/with-separator"
 import withSeparatorCode from "./examples/with-separator.tsx?raw"
 import WithText from "./examples/with-text"
 import withTextCode from "./examples/with-text.tsx?raw"
-
-const buttonGroupProps: PropRow[] = [
-  {
-    prop: "orientation",
-    type: '"horizontal" | "vertical"',
-    default: '"horizontal"',
-    description: "Direction the buttons are laid out and merged in.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "The remaining native <div> attributes. Rendered with role=\"group\".",
-  },
-]
-
-const buttonGroupTextProps: PropRow[] = [
-  {
-    prop: "asChild",
-    type: "boolean",
-    default: "false",
-    description: "Renders the child as the root element (via Slot), inheriting the button group text styles.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "The remaining native <div> attributes.",
-  },
-]
-
-const buttonGroupSeparatorProps: PropRow[] = [
-  {
-    prop: "orientation",
-    type: '"horizontal" | "vertical"',
-    default: '"vertical"',
-    description: "Direction of the separator line between segments.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof Separator>",
-    description: "Extends Separator (radix-ui Separator.Root) from @aogusto/arui.",
-  },
-]
 
 export default function ButtonGroupDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -11,25 +11,6 @@ import Portrait from "./examples/portrait"
 import portraitCode from "./examples/portrait.tsx?raw"
 import Video from "./examples/video"
 import videoCode from "./examples/video.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "ratio",
-    type: "number",
-    default: "1",
-    description: "The desired width to height ratio, e.g. 16 / 9 for a widescreen box or 2 / 3 for a portrait poster.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes applied to the underlying element. AspectRatio has no default styles of its own to merge with, so this fully controls the box's appearance.",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof AspectRatioPrimitive.Root>",
-    description: "Extends AspectRatio.Root from radix-ui. Children fill the ratio box through an absolutely positioned wrapper, so an <img> or <iframe> should use h-full w-full object-cover to fill it.",
-  },
-]
 
 export default function AspectRatioDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

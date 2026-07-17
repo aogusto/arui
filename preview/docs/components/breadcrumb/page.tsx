@@ -1,7 +1,16 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import {
+  meta,
+  breadcrumbProps,
+  breadcrumbListProps,
+  breadcrumbItemProps,
+  breadcrumbLinkProps,
+  breadcrumbPageProps,
+  breadcrumbSeparatorProps,
+  breadcrumbEllipsisProps,
+} from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,109 +22,6 @@ import CustomSeparator from "./examples/custom-separator"
 import customSeparatorCode from "./examples/custom-separator.tsx?raw"
 import AsChild from "./examples/as-child"
 import asChildCode from "./examples/as-child.tsx?raw"
-
-const breadcrumbProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'nav'>",
-    description: "The remaining native <nav> attributes. Renders as the root <nav aria-label=\"breadcrumb\"> of the trail.",
-  },
-]
-
-const breadcrumbListProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'ol'>",
-    description: "The remaining native <ol> attributes. Wraps the items and wraps onto multiple lines when the trail doesn't fit.",
-  },
-]
-
-const breadcrumbItemProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'li'>",
-    description: "The remaining native <li> attributes. Wraps a link, the current page, or an ellipsis.",
-  },
-]
-
-const breadcrumbLinkProps: PropRow[] = [
-  {
-    prop: "asChild",
-    type: "boolean",
-    default: "false",
-    description: "Renders the child as the root element (via Slot) instead of an <a>, useful for a router's Link component.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'a'>",
-    description: "The remaining native <a> attributes (href, target, etc.).",
-  },
-]
-
-const breadcrumbPageProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'span'>",
-    description: "The remaining native <span> attributes. Renders with aria-current=\"page\" and aria-disabled=\"true\" to mark the current, non-interactive item.",
-  },
-]
-
-const breadcrumbSeparatorProps: PropRow[] = [
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    default: "<ChevronRightIcon />",
-    description: "Custom separator content, replacing the default chevron icon.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'li'>",
-    description: "The remaining native <li> attributes. Rendered with role=\"presentation\" and aria-hidden=\"true\".",
-  },
-]
-
-const breadcrumbEllipsisProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'span'>",
-    description: "The remaining native <span> attributes. Renders a MoreHorizontal icon plus a screen-reader-only \"More\" label, standing in for collapsed items.",
-  },
-]
 
 export default function BreadcrumbDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

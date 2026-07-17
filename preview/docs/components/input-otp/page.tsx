@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, propsInputOtp, propsGroup, propsSlot, propsSeparator } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -15,111 +15,6 @@ import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
 import FormExample from "./examples/form"
 import formCode from "./examples/form.tsx?raw"
-
-const inputOtpProps: PropRow[] = [
-  {
-    prop: "maxLength",
-    type: "number",
-    description: "Required. Number of characters the code holds, and how many slots should be rendered.",
-  },
-  {
-    prop: "value",
-    type: "string",
-    description: "Controlled value of the code.",
-  },
-  {
-    prop: "onChange",
-    type: "(value: string) => void",
-    description: "Called with the new value on every keystroke, paste, or deletion.",
-  },
-  {
-    prop: "onComplete",
-    type: "(value: string) => void",
-    description: "Called once when the value reaches maxLength.",
-  },
-  {
-    prop: "pattern",
-    type: "string",
-    description: "Regex string used to filter which characters are accepted, for example digits only.",
-  },
-  {
-    prop: "textAlign",
-    type: '"left" | "center" | "right"',
-    default: '"left"',
-    description: "Alignment of the character inside each slot.",
-  },
-  {
-    prop: "pushPasswordManagerStrategy",
-    type: '"increase-width" | "none"',
-    default: '"increase-width"',
-    description: "How the field reacts to the browser's password manager icon overlapping the first slot.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables the input. Slots render with reduced opacity.",
-  },
-  {
-    prop: "containerClassName",
-    type: "string",
-    description: "Additional classes for the outer container that wraps the groups and slots.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof OTPInput>",
-    description: "Extends OTPInput from the input-otp library (autoFocus, inputMode, name, and other native input attributes).",
-  },
-]
-
-const groupProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "Extends the native <div> element. Wraps a set of InputOTPSlot into one connected group of boxes.",
-  },
-]
-
-const slotProps: PropRow[] = [
-  {
-    prop: "index",
-    type: "number",
-    description: "Required. Position of this slot in the code (0-based). Reads its char and caret state from the shared OTP context.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "Extends the native <div> element.",
-  },
-]
-
-const separatorProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "Extends the native <div> element. Renders a fixed dash icon between two groups.",
-  },
-]
 
 export default function InputOtpDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`
@@ -150,22 +45,22 @@ export default function InputOtpDoc() {
 
         <div className="space-y-3">
           <h3 className="text-headline font-semibold text-label">InputOTP</h3>
-          <PropsTable rows={inputOtpProps} />
+          <PropsTable rows={propsInputOtp} />
         </div>
 
         <div className="space-y-3">
           <h3 className="text-headline font-semibold text-label">InputOTPGroup</h3>
-          <PropsTable rows={groupProps} />
+          <PropsTable rows={propsGroup} />
         </div>
 
         <div className="space-y-3">
           <h3 className="text-headline font-semibold text-label">InputOTPSlot</h3>
-          <PropsTable rows={slotProps} />
+          <PropsTable rows={propsSlot} />
         </div>
 
         <div className="space-y-3">
           <h3 className="text-headline font-semibold text-label">InputOTPSeparator</h3>
-          <PropsTable rows={separatorProps} />
+          <PropsTable rows={propsSeparator} />
         </div>
       </section>
     </article>

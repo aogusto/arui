@@ -1,7 +1,15 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import {
+  meta,
+  paginationProps,
+  paginationContentProps,
+  paginationItemProps,
+  paginationLinkProps,
+  paginationPrevNextProps,
+  paginationEllipsisProps,
+} from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,97 +21,6 @@ import Simple from "./examples/simple"
 import simpleCode from "./examples/simple.tsx?raw"
 import CustomLabels from "./examples/custom-labels"
 import customLabelsCode from "./examples/custom-labels.tsx?raw"
-
-const paginationProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'nav'>",
-    description: "The remaining native <nav> attributes. role=\"navigation\" and aria-label=\"pagination\" are already set internally.",
-  },
-]
-
-const paginationContentProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'ul'>",
-    description: "The remaining native <ul> attributes. Lays out its PaginationItem children in a row with a small gap.",
-  },
-]
-
-const paginationItemProps: PropRow[] = [
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'li'>",
-    description: "The native <li> attributes, including className. Wraps a single PaginationLink, PaginationPrevious, PaginationNext, or PaginationEllipsis.",
-  },
-]
-
-const paginationLinkProps: PropRow[] = [
-  {
-    prop: "isActive",
-    type: "boolean",
-    default: "false",
-    description: "Marks the link as the current page: renders the outline Button variant instead of ghost and sets aria-current=\"page\".",
-  },
-  {
-    prop: "size",
-    type: '"default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg"',
-    default: '"icon"',
-    description: "Size passed through to the underlying Button. Numbered page links are icon-sized by default; PaginationPrevious and PaginationNext override it to default.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'a'>",
-    description: "The remaining native <a> attributes (href, onClick, etc.). Rendered as a Button with asChild, so it keeps full button styling on a real link element.",
-  },
-]
-
-const paginationPrevNextProps: PropRow[] = [
-  {
-    prop: "text",
-    type: "string",
-    default: '"Previous" / "Next"',
-    description: "Label rendered next to the arrow icon. Hidden below the sm breakpoint, leaving only the icon visible on small screens.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof PaginationLink>",
-    description: "Accepts every PaginationLink prop (href, isActive, size, onClick, etc.). aria-label defaults to \"Go to previous page\" / \"Go to next page\".",
-  },
-]
-
-const paginationEllipsisProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'span'>",
-    description: "The remaining native <span> attributes. Renders a MoreHorizontalIcon, is aria-hidden, and carries a screen-reader-only \"More pages\" label.",
-  },
-]
 
 export default function PaginationDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

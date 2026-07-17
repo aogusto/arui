@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -15,53 +15,6 @@ import WithText from "./examples/with-text"
 import withTextCode from "./examples/with-text.tsx?raw"
 import Toolbar from "./examples/toolbar"
 import toolbarCode from "./examples/toolbar.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "variant",
-    type: '"default" | "outline"',
-    default: '"default"',
-    description: "Visual style of the toggle.",
-  },
-  {
-    prop: "size",
-    type: '"default" | "sm" | "lg"',
-    default: '"default"',
-    description: "Size of the toggle.",
-  },
-  {
-    prop: "pressed",
-    type: "boolean",
-    description: "Controlled pressed state. Use with onPressedChange.",
-  },
-  {
-    prop: "defaultPressed",
-    type: "boolean",
-    default: "false",
-    description: "Initial pressed state for uncontrolled usage.",
-  },
-  {
-    prop: "onPressedChange",
-    type: "(pressed: boolean) => void",
-    description: "Called when the pressed state changes.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables the toggle and prevents interaction.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TogglePrimitive.Root>",
-    description: "Extends Toggle.Root from radix-ui.",
-  },
-]
 
 export default function ToggleDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

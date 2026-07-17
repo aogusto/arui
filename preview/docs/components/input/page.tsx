@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,36 +13,6 @@ import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
 import Invalid from "./examples/invalid"
 import invalidCode from "./examples/invalid.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "type",
-    type: "React.HTMLInputTypeAttribute",
-    default: '"text"',
-    description: "Native input type (text, email, password, number, search, tel, url, date, file, etc.).",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables the input and applies the disabled styles.",
-  },
-  {
-    prop: "aria-invalid",
-    type: "boolean | 'true' | 'false'",
-    description: "Marks the input as invalid, switching the border and focus ring to the destructive color.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'input'>",
-    description: "The remaining native <input> attributes (value, placeholder, onChange, etc.).",
-  },
-]
 
 export default function InputDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

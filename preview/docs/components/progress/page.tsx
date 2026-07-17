@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -11,30 +11,6 @@ import WithLabel from "./examples/with-label"
 import withLabelCode from "./examples/with-label.tsx?raw"
 import Thick from "./examples/thick"
 import thickCode from "./examples/thick.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "value",
-    type: "number | null",
-    description: "Current progress, on a 0-100 scale. The visual fill reads this number directly as a percentage width; null (or omitted) renders an empty bar.",
-  },
-  {
-    prop: "max",
-    type: "number",
-    default: "100",
-    description: "Upper bound of the range, forwarded to the underlying Radix root. Does not affect the visual fill width, which always reads value as a raw percentage.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof ProgressPrimitive.Root>",
-    description: "Extends Progress.Root from radix-ui.",
-  },
-]
 
 export default function ProgressDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

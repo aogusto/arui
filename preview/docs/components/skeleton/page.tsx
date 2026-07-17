@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -11,19 +11,6 @@ import Card from "./examples/card"
 import cardCode from "./examples/card.tsx?raw"
 import List from "./examples/list"
 import listCode from "./examples/list.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn(). Controls width, height, and shape (rounded-full, rounded-xl, etc), since Skeleton has no size of its own.",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "The remaining native <div> attributes. Renders as a <div data-slot=\"skeleton\"> with a pulsing muted background.",
-  },
-]
 
 export default function SkeletonDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

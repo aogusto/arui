@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,19 +13,6 @@ import WithText from "./examples/with-text"
 import withTextCode from "./examples/with-text.tsx?raw"
 import InButton from "./examples/in-button"
 import inButtonCode from "./examples/in-button.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own default (size-4 animate-spin) via cn(). Use size-* to resize the spinner and text-* to recolor it, since the icon reads currentColor.",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"svg">',
-    description: 'The remaining native <svg> attributes. Rendered with role="status" and aria-label="Loading" by default; pass your own aria-label to describe what is loading.',
-  },
-]
 
 export default function SpinnerDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

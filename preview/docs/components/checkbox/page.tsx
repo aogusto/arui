@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -11,57 +11,6 @@ import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
 import WithLabel from "./examples/with-label"
 import withLabelCode from "./examples/with-label.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "checked",
-    type: 'boolean | "indeterminate"',
-    description: "Controlled checked state. Use with onCheckedChange.",
-  },
-  {
-    prop: "defaultChecked",
-    type: 'boolean | "indeterminate"',
-    description: "Initial checked state for uncontrolled usage.",
-  },
-  {
-    prop: "onCheckedChange",
-    type: '(checked: boolean | "indeterminate") => void',
-    description: "Called when the checked state changes.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables the checkbox and prevents interaction.",
-  },
-  {
-    prop: "required",
-    type: "boolean",
-    default: "false",
-    description: "Marks the checkbox as required in a form.",
-  },
-  {
-    prop: "name",
-    type: "string",
-    description: "Name submitted with the form data.",
-  },
-  {
-    prop: "value",
-    type: "string | number | readonly string[]",
-    default: '"on"',
-    description: "Value submitted with the form data when checked.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof CheckboxPrimitive.Root>",
-    description: "Extends Checkbox.Root from radix-ui.",
-  },
-]
 
 export default function CheckboxDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

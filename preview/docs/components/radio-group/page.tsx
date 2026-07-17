@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, radioGroupProps, radioGroupItemProps } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,86 +13,6 @@ import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
 import Invalid from "./examples/invalid"
 import invalidCode from "./examples/invalid.tsx?raw"
-
-const radioGroupProps: PropRow[] = [
-  {
-    prop: "value",
-    type: "string | null",
-    description: "The controlled selected value. Pair with onValueChange.",
-  },
-  {
-    prop: "defaultValue",
-    type: "string",
-    description: "The value initially selected, for an uncontrolled group.",
-  },
-  {
-    prop: "onValueChange",
-    type: "(value: string) => void",
-    description: "Called when the selected item changes.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables every item in the group.",
-  },
-  {
-    prop: "name",
-    type: "string",
-    description: "Name submitted with the enclosing form.",
-  },
-  {
-    prop: "required",
-    type: "boolean",
-    default: "false",
-    description: "Marks the group as required in an HTML form.",
-  },
-  {
-    prop: "orientation",
-    type: '"horizontal" | "vertical"',
-    description: "Orientation used for arrow key navigation between items.",
-  },
-  {
-    prop: "loop",
-    type: "boolean",
-    default: "false",
-    description: "Whether arrow key navigation loops from the last item back to the first.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof RadioGroupPrimitive.Root>",
-    description: "Extends RadioGroup.Root from radix-ui, so the remaining native <div> attributes are all supported.",
-  },
-]
-
-const radioGroupItemProps: PropRow[] = [
-  {
-    prop: "value",
-    type: "string",
-    description: "The value submitted when this item is selected. Required.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables this single item, independently of the group.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof RadioGroupPrimitive.Item>",
-    description: "Extends RadioGroup.Item from radix-ui, so the remaining native <button> attributes (id, aria-invalid, required, etc.) are all supported.",
-  },
-]
 
 export default function RadioGroupDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

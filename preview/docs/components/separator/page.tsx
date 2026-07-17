@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -11,31 +11,6 @@ import InAList from "./examples/in-a-list"
 import inAListCode from "./examples/in-a-list.tsx?raw"
 import Decorative from "./examples/decorative"
 import decorativeCode from "./examples/decorative.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "orientation",
-    type: '"horizontal" | "vertical"',
-    default: '"horizontal"',
-    description: "Direction of the separator line.",
-  },
-  {
-    prop: "decorative",
-    type: "boolean",
-    default: "true",
-    description: "When true, the separator is purely visual and hidden from the accessibility tree. Set to false to expose it as a semantic boundary between content.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof SeparatorPrimitive.Root>",
-    description: "Extends Separator.Root from radix-ui.",
-  },
-]
 
 export default function SeparatorDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

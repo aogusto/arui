@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, propsNativeSelect, propsNativeSelectOption, propsNativeSelectOptGroup } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,62 +13,6 @@ import OptionGroups from "./examples/option-groups"
 import optionGroupsCode from "./examples/option-groups.tsx?raw"
 import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
-
-const nativeSelectProps: PropRow[] = [
-  {
-    prop: "size",
-    type: '"default" | "sm"',
-    default: '"default"',
-    description: "Size of the select. Sets the trigger height only, not the native HTML size attribute.",
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Disables the select and dims the wrapper.",
-  },
-  {
-    prop: "aria-invalid",
-    type: "boolean | 'true' | 'false'",
-    description: "Marks the select as invalid, switching the border and focus ring to the destructive color.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged via cn() with the wrapper div's styles (not applied to the underlying <select>).",
-  },
-  {
-    prop: "...props",
-    type: "Omit<React.ComponentProps<'select'>, 'size'>",
-    description: "The remaining native <select> attributes (value, onChange, multiple, etc.). Native size is omitted in favor of the size prop above.",
-  },
-]
-
-const nativeSelectOptionProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'option'>",
-    description: "The remaining native <option> attributes (value, disabled, etc.).",
-  },
-]
-
-const nativeSelectOptGroupProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'optgroup'>",
-    description: "The remaining native <optgroup> attributes (label, disabled, etc.).",
-  },
-]
 
 export default function NativeSelectDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`
@@ -98,17 +42,17 @@ export default function NativeSelectDoc() {
 
         <div className="space-y-3">
           <h3 className="text-headline font-semibold text-label">NativeSelect</h3>
-          <PropsTable rows={nativeSelectProps} />
+          <PropsTable rows={propsNativeSelect} />
         </div>
 
         <div className="space-y-3">
           <h3 className="text-headline font-semibold text-label">NativeSelectOption</h3>
-          <PropsTable rows={nativeSelectOptionProps} />
+          <PropsTable rows={propsNativeSelectOption} />
         </div>
 
         <div className="space-y-3">
           <h3 className="text-headline font-semibold text-label">NativeSelectOptGroup</h3>
-          <PropsTable rows={nativeSelectOptGroupProps} />
+          <PropsTable rows={propsNativeSelectOptGroup} />
         </div>
       </section>
     </article>

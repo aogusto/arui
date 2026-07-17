@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, tabsProps, tabsListProps, tabsTriggerProps, tabsContentProps } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,70 +13,6 @@ import Vertical from "./examples/vertical"
 import verticalCode from "./examples/vertical.tsx?raw"
 import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
-
-const tabsProps: PropRow[] = [
-  {
-    prop: "orientation",
-    type: '"horizontal" | "vertical"',
-    default: '"horizontal"',
-    description: "Layout direction of the whole component. Horizontal stacks the list above its content; vertical places the list beside its content.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TabsPrimitive.Root>",
-    description: "Extends Radix's Tabs.Root. Common props: value, defaultValue, onValueChange, activationMode. Uncontrolled by default via defaultValue.",
-  },
-]
-
-const tabsListProps: PropRow[] = [
-  {
-    prop: "variant",
-    type: '"default" | "line" | "segmented"',
-    default: '"default"',
-    description: "Visual style of the tab list: a filled pill background, an underline under the active tab, or a frosted segmented control.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TabsPrimitive.List>",
-    description: "Extends Radix's Tabs.List.",
-  },
-]
-
-const tabsTriggerProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TabsPrimitive.Trigger>",
-    description: "Extends Radix's Tabs.Trigger. Requires a value matching a TabsContent, and accepts disabled. Add data-icon=\"inline-start\" or data-icon=\"inline-end\" to a nested icon for correct spacing.",
-  },
-]
-
-const tabsContentProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof TabsPrimitive.Content>",
-    description: "Extends Radix's Tabs.Content. Requires a value matching a TabsTrigger.",
-  },
-]
 
 export default function TabsDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

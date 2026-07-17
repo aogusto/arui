@@ -1,7 +1,19 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import {
+  meta,
+  fieldProps,
+  fieldLabelProps,
+  fieldDescriptionProps,
+  fieldErrorProps,
+  fieldSetProps,
+  fieldLegendProps,
+  fieldGroupProps,
+  fieldSeparatorProps,
+  fieldContentProps,
+  fieldTitleProps,
+} from "./meta"
 
 import Orientation from "./examples/orientation"
 import orientationCode from "./examples/orientation.tsx?raw"
@@ -13,163 +25,6 @@ import WithError from "./examples/with-error"
 import withErrorCode from "./examples/with-error.tsx?raw"
 import SeparatorExample from "./examples/separator"
 import separatorCode from "./examples/separator.tsx?raw"
-
-const fieldProps: PropRow[] = [
-  {
-    prop: "orientation",
-    type: '"vertical" | "horizontal" | "responsive"',
-    default: '"vertical"',
-    description: "Layout direction of the label/control pair. \"responsive\" stacks vertically and switches to horizontal at the @md container breakpoint.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "Extends the native <div>. Rendered with role=\"group\".",
-  },
-]
-
-const fieldLabelProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof Label>",
-    description: "Extends Label (LabelPrimitive.Root). Wrap a <Field> as a child to turn it into a selectable card that highlights when its control is checked.",
-  },
-]
-
-const fieldDescriptionProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'p'>",
-    description: "Extends the native <p>. Rendered as muted helper text below the control.",
-  },
-]
-
-const fieldErrorProps: PropRow[] = [
-  {
-    prop: "errors",
-    type: "Array<{ message?: string } | undefined>",
-    description: "react-hook-form style error objects. Duplicate messages are deduped; more than one renders as a bullet list.",
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "Explicit error content. Takes precedence over errors when provided.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "Extends the native <div>. Rendered with role=\"alert\" and renders nothing when there is no content.",
-  },
-]
-
-const fieldSetProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'fieldset'>",
-    description: "Extends the native <fieldset> element.",
-  },
-]
-
-const fieldLegendProps: PropRow[] = [
-  {
-    prop: "variant",
-    type: '"legend" | "label"',
-    default: '"legend"',
-    description: "Controls the text size: \"legend\" for a section heading, \"label\" for a smaller inline caption.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'legend'>",
-    description: "Extends the native <legend> element.",
-  },
-]
-
-const fieldGroupProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "Extends the native <div>. Groups Field/FieldSet children and manages the vertical rhythm between them.",
-  },
-]
-
-const fieldSeparatorProps: PropRow[] = [
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "Optional label rendered on top of the separator line, e.g. \"Or continue with\".",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "Extends the native <div>.",
-  },
-]
-
-const fieldContentProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "Extends the native <div>. Wraps a label/description pair so they share the flexible column inside a horizontal or responsive Field.",
-  },
-]
-
-const fieldTitleProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<'div'>",
-    description: "Extends the native <div>. A non-interactive label style, use inside FieldContent when the Field itself (not a <label>) is the clickable target, e.g. radio or checkbox cards.",
-  },
-]
 
 export default function FieldDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

@@ -1,7 +1,16 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import {
+  meta,
+  tableProps,
+  tableHeaderProps,
+  tableBodyProps,
+  tableFooterProps,
+  tableRowProps,
+  tableHeadProps,
+  tableCellProps,
+} from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,97 +22,6 @@ import WithBadge from "./examples/with-badge"
 import withBadgeCode from "./examples/with-badge.tsx?raw"
 import RowSelection from "./examples/row-selection"
 import rowSelectionCode from "./examples/row-selection.tsx?raw"
-
-const tableProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"table">',
-    description: "The remaining native <table> attributes. Rendered inside a wrapper div with overflow-x-auto for horizontal scroll on small screens.",
-  },
-]
-
-const tableHeaderProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"thead">',
-    description: "The remaining native <thead> attributes.",
-  },
-]
-
-const tableBodyProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"tbody">',
-    description: "The remaining native <tbody> attributes.",
-  },
-]
-
-const tableFooterProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"tfoot">',
-    description: "The remaining native <tfoot> attributes. Renders with a top border and a muted background by default.",
-  },
-]
-
-const tableRowProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"tr">',
-    description: 'The remaining native <tr> attributes. Set data-state="selected" to highlight the row, e.g. for row selection.',
-  },
-]
-
-const tableHeadProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"th">',
-    description: "The remaining native <th> attributes.",
-  },
-]
-
-const tableCellProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"td">',
-    description: 'The remaining native <td> attributes. Use colSpan to span a cell across columns, e.g. in a footer total row.',
-  },
-]
 
 export default function TableDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

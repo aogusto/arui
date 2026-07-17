@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, kbdProps, kbdGroupProps } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,32 +13,6 @@ import InText from "./examples/in-text"
 import inTextCode from "./examples/in-text.tsx?raw"
 import InTooltip from "./examples/in-tooltip"
 import inTooltipCode from "./examples/in-tooltip.tsx?raw"
-
-const kbdProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"kbd">',
-    description: "The remaining native <kbd> attributes.",
-  },
-]
-
-const kbdGroupProps: PropRow[] = [
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: 'React.ComponentProps<"div">',
-    description: "The remaining native <div> attributes, spread onto the rendered <kbd> element that wraps the group.",
-  },
-]
 
 export default function KbdDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`

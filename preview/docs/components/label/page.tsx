@@ -1,7 +1,7 @@
 import { Demo } from "../../Demo"
-import { PropsTable, type PropRow } from "../../PropsTable"
+import { PropsTable } from "../../PropsTable"
 import { CopyButton } from "../../../components/CopyButton"
-import { meta } from "./meta"
+import { meta, props } from "./meta"
 
 import Default from "./examples/default"
 import defaultCode from "./examples/default.tsx?raw"
@@ -13,30 +13,6 @@ import Required from "./examples/required"
 import requiredCode from "./examples/required.tsx?raw"
 import Disabled from "./examples/disabled"
 import disabledCode from "./examples/disabled.tsx?raw"
-
-const props: PropRow[] = [
-  {
-    prop: "htmlFor",
-    type: "string",
-    description: "Id of the form control this label describes. Clicking the label focuses (or toggles) that control.",
-  },
-  {
-    prop: "asChild",
-    type: "boolean",
-    default: "false",
-    description: "Renders the child as the root element (via Slot), inheriting the label styles.",
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional classes, merged with the component's own styles via cn().",
-  },
-  {
-    prop: "...props",
-    type: "React.ComponentProps<typeof LabelPrimitive.Root>",
-    description: "Extends Label.Root from radix-ui, so the remaining native <label> attributes (id, onClick, etc.) are all supported.",
-  },
-]
 
 export default function LabelDoc() {
   const importLine = `import { ${meta.imports.join(", ")} } from "@aogusto/arui"`
