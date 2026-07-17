@@ -15,8 +15,25 @@ export function GitHubMark({ className }: { className?: string }) {
 }
 
 /**
- * The Arui wordmark. The diamond is a rotated, gradient-filled square — a glass
- * facet — rather than a glyph, so it renders identically everywhere.
+ * The Arui logo mark: a rotated, gradient-filled square (a glass facet) rather
+ * than a glyph, so it renders identically everywhere. Sized in em so it scales
+ * with the surrounding text.
+ */
+export function LogoMark({ className }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={cn(
+        "inline-block size-[0.7em] rotate-45 rounded-[0.15em] bg-gradient-to-br from-indigo via-cyan to-pink shadow-glass-sm",
+        className
+      )}
+    />
+  )
+}
+
+/**
+ * The Arui wordmark: the logo mark next to the name. Used in the landing nav and
+ * the docs topbar so the brand reads the same everywhere.
  */
 export function Wordmark({
   className,
@@ -28,10 +45,7 @@ export function Wordmark({
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <span
-        aria-hidden
-        className="inline-block size-[0.7em] rotate-45 rounded-[0.15em] bg-gradient-to-br from-indigo via-cyan to-pink shadow-glass-sm"
-      />
+      <LogoMark />
       <span
         className={cn(
           "font-bold tracking-[-0.02em]",

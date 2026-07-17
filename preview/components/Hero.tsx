@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react"
+import { Link } from "@tanstack/react-router"
 import { GlassSurface, Button } from "@aogusto/arui"
 import { HERO_INSTALL, SITE } from "../showcase"
 import { scrollToId } from "../lib/scroll"
@@ -41,13 +42,19 @@ export function Hero() {
             <CommandRow command={HERO_INSTALL} tone="light" />
 
             <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg" className="gap-1.5">
+                <Link to="/docs">
+                  Read the docs
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
               <Button
                 size="lg"
-                className="gap-1.5"
+                variant="outline"
+                className="gap-1.5 border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white dark:border-white/25 dark:bg-white/10 dark:hover:bg-white/20"
                 onClick={() => scrollToId("components")}
               >
                 Browse components
-                <ArrowRight className="size-4" />
               </Button>
               <Button
                 asChild

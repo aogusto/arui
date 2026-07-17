@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetTrigger, Button, Kbd, KbdGroup } from "@aogus
 import { Menu, Search } from "lucide-react"
 import { useTheme } from "../lib/useTheme"
 import { ThemeToggle } from "../components/ThemeToggle"
+import { Wordmark } from "../components/icons"
 import { CommandMenu } from "./CommandMenu"
 import { DOCS_REGISTRY, DOCS_CATEGORIES } from "./registry"
 
@@ -66,7 +67,13 @@ export function DocsLayout() {
             <SidebarNav onNavigate={() => setMobileNavOpen(false)} />
           </SheetContent>
         </Sheet>
-        <Link to="/" className="text-headline font-semibold">arui</Link>
+        <Link
+          to="/"
+          className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          aria-label="arui, back to home"
+        >
+          <Wordmark className="text-headline" />
+        </Link>
         <Button
           variant="outline"
           onClick={() => setCommandOpen(true)}

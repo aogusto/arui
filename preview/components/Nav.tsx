@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router"
 import { GlassSurface, Button } from "@aogusto/arui"
 import { cn } from "@/lib/utils"
 import { NAV_LINKS, SITE } from "../showcase"
@@ -41,6 +42,14 @@ export function Nav({ theme, onToggleTheme }: NavProps) {
           </nav>
 
           <div className="ml-auto flex items-center gap-2">
+            <Button asChild size="sm">
+              <Link to="/docs">Docs</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm" className="hidden gap-1.5 sm:inline-flex">
+              <a href="https://www.npmjs.com/package/@aogusto/arui" target="_blank" rel="noreferrer">
+                npm
+              </a>
+            </Button>
             <Button asChild variant="ghost" size="sm" className="gap-1.5">
               <a href={SITE.github} target="_blank" rel="noreferrer">
                 <GitHubMark />
