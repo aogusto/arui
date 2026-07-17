@@ -8,11 +8,11 @@ Point your coding agent at it and the agent can look up components, their props,
 
 Five tools, served from a manifest generated from the arui docs (never hand-written, so it stays in sync):
 
-- `list_components(category?)` — every component with a one-line description.
-- `get_component(name)` — import line, curated props, and live examples for one component.
-- `search_components(query)` — find components by use case ("date picker", "toast", "command palette").
-- `get_design_guide(topic?)` — the Apple HIG usage guide with the glassmorphism material, tokens, motion, and accessibility rules.
-- `get_setup()` — how to install arui and wire the Tailwind v4 theme.
+- `list_components(category?)`: every component with a one-line description.
+- `get_component(name)`: import line, curated props, and live examples for one component.
+- `search_components(query)`: find components by use case ("date picker", "toast", "command palette").
+- `get_design_guide(topic?)`: the Apple HIG usage guide with the glassmorphism material, tokens, motion, and accessibility rules.
+- `get_setup()`: how to install arui and wire the Tailwind v4 theme.
 
 ## Install
 

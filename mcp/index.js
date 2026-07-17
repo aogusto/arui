@@ -16,7 +16,7 @@ const text = (s) => ({ content: [{ type: "text", text: s }] })
 function renderComponent(c) {
   const propLines = c.props.length
     ? c.props
-        .map((p) => `- ${p.prop}: ${p.type}${p.default ? ` (default ${p.default})` : ""} — ${p.description}`)
+        .map((p) => `- ${p.prop}: ${p.type}${p.default ? ` (default ${p.default})` : ""}. ${p.description}`)
         .join("\n")
     : "(no documented props)"
   const examples = c.examples.map((e) => `### ${e.name}\n\`\`\`tsx\n${e.code}\n\`\`\``).join("\n\n")
@@ -47,7 +47,7 @@ const tools = [
       const list = manifest.components.filter(
         (c) => !args?.category || c.category.toLowerCase() === args.category.toLowerCase()
       )
-      return text(list.map((c) => `- ${c.slug} — ${c.name} (${c.category}): ${c.description}`).join("\n"))
+      return text(list.map((c) => `- ${c.slug} (${c.name}, ${c.category}): ${c.description}`).join("\n"))
     },
   },
   {
@@ -89,7 +89,7 @@ const tools = [
         return hay.includes(q)
       })
       if (!hits.length) return text(`No matches for "${args.query}".`)
-      return text(hits.map((c) => `- ${c.slug} — ${c.name}: ${c.description}`).join("\n"))
+      return text(hits.map((c) => `- ${c.slug} (${c.name}): ${c.description}`).join("\n"))
     },
   },
   {
