@@ -3,57 +3,30 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Tabs as TabsPrimitive } from "radix-ui"
-import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
+import { useGlassHighlight, GlassPill } from "@/components/ui/glass-highlight"
 
 type TabsVariant = "default" | "line" | "segmented" | "glass"
-
-interface TabsRootContextValue {
-  activeValue: string | undefined
-  pillId: string
-}
-const TabsRootContext = React.createContext<TabsRootContextValue | null>(null)
-const TabsListContext = React.createContext<{ variant: TabsVariant }>({ variant: "default" })
 
 function Tabs({
   className,
   orientation = "horizontal",
-  value,
-  defaultValue,
-  onValueChange,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Root>) {
-  const pillId = React.useId()
-  const [internalValue, setInternalValue] = React.useState<string | undefined>(
-    value ?? defaultValue
-  )
-  const activeValue = value ?? internalValue
-  const handleValueChange = React.useCallback(
-    (next: string) => {
-      setInternalValue(next)
-      onValueChange?.(next)
-    },
-    [onValueChange]
-  )
   return (
-    <TabsRootContext.Provider value={{ activeValue, pillId }}>
-      <TabsPrimitive.Root
-        data-slot="tabs"
-        data-orientation={orientation}
-        orientation={orientation}
-        value={value}
-        defaultValue={defaultValue}
-        onValueChange={handleValueChange}
-        className={cn("group/tabs flex gap-2 data-[orientation=horizontal]:flex-col", className)}
-        {...props}
-      />
-    </TabsRootContext.Provider>
+    <TabsPrimitive.Root
+      data-slot="tabs"
+      data-orientation={orientation}
+      orientation={orientation}
+      className={cn("group/tabs flex gap-2 data-[orientation=horizontal]:flex-col", className)}
+      {...props}
+    />
   )
 }
 
 const tabsListVariants = cva(
-  "group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none",
+  "group/tabs-list relative inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none",
   {
     variants: {
       variant: {
@@ -61,7 +34,7 @@ const tabsListVariants = cva(
         line: "gap-1 bg-transparent",
         segmented: "bg-muted/60 supports-backdrop-filter:backdrop-blur-md",
         glass:
-          "relative overflow-hidden rounded-2xl p-1 group-data-[orientation=horizontal]/tabs:h-10 " +
+          "overflow-hidden rounded-2xl p-1 group-data-[orientation=horizontal]/tabs:h-10 " +
           "bg-glass-regular/60 supports-[backdrop-filter]:bg-glass-regular/40 backdrop-blur-glass backdrop-saturate-150 " +
           "border border-white/15 dark:border-white/10 shadow-glass-sm",
       },
@@ -73,31 +46,29 @@ const tabsListVariants = cva(
 function TabsList({
   className,
   variant,
+  children,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List> & VariantProps<typeof tabsListVariants>) {
   const resolved: TabsVariant = variant ?? "default"
+  const listRef = React.useRef<HTMLDivElement>(null)
+  const { geometry } = useGlassHighlight({
+    containerRef: listRef,
+    activeSelector: '[data-state="active"]',
+    measure: "rect",
+    enabled: resolved === "glass",
+  })
   return (
-    <TabsListContext.Provider value={{ variant: resolved }}>
-      <TabsPrimitive.List
-        data-slot="tabs-list"
-        data-variant={resolved}
-        className={cn(tabsListVariants({ variant: resolved }), className)}
-        {...props}
-      />
-    </TabsListContext.Provider>
+    <TabsPrimitive.List
+      ref={listRef}
+      data-slot="tabs-list"
+      data-variant={resolved}
+      className={cn(tabsListVariants({ variant: resolved }), className)}
+      {...props}
+    >
+      {resolved === "glass" && <GlassPill geometry={geometry} className="rounded-xl" />}
+      {children}
+    </TabsPrimitive.List>
   )
-}
-
-// Active-item lens for the glass variant. It is a real frosted pane: a
-// theme-aware frost (rgb(--glass-regular)) so it stays light on light and dark
-// on dark, mixed with a touch of the tint, plus a top shine and a soft lift.
-// backdrop-blur (on the element's className) is what makes it read as glass in
-// both modes rather than a flat translucent color.
-const GLASS_PILL_STYLE: React.CSSProperties = {
-  background:
-    "color-mix(in oklch, var(--glass-tint, var(--primary)) 18%, rgb(var(--glass-regular) / 0.82))",
-  boxShadow:
-    "inset 0 1px 0 0 rgb(255 255 255 / 0.55), inset 0 0 0 0.5px rgb(255 255 255 / 0.15), 0 2px 8px -3px rgb(0 0 0 / 0.28)",
 }
 
 function TabsTrigger({
@@ -106,11 +77,6 @@ function TabsTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
-  const root = React.useContext(TabsRootContext)
-  const { variant } = React.useContext(TabsListContext)
-  const isGlass = variant === "glass"
-  const isActive = isGlass && root != null && root.activeValue === value
-
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
@@ -125,16 +91,6 @@ function TabsTrigger({
       )}
       {...props}
     >
-      {isActive && root && (
-        <motion.span
-          layoutId={`tabs-glass-pill-${root.pillId}`}
-          aria-hidden="true"
-          className="absolute inset-0 rounded-xl border border-white/40 dark:border-white/15"
-          style={GLASS_PILL_STYLE}
-          initial={false}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
-        />
-      )}
       <span className="relative z-10 inline-flex items-center justify-center gap-1.5">
         {children}
       </span>
