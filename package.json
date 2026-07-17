@@ -1,6 +1,6 @@
 {
   "name": "@aogusto/arui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Biblioteca de componentes React — Apple HIG + Tailwind 4 (shadcn-derived).",
   "keywords": [
     "react",
