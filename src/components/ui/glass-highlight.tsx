@@ -130,6 +130,16 @@ export function GlassPill({
 }) {
   const reduce = useReducedMotion()
   const isReady = geometry != null
+  // Primeiro reveal (escondido para visível, ex.: menu recém-aberto ganha o
+  // primeiro item destacado): o pill surge no lugar via opacity, sem deslizar
+  // do canto (0, 0). O movimento item a item depois disso usa a spring.
+  const wasReady = React.useRef(false)
+  const justAppeared = isReady && !wasReady.current
+  React.useEffect(() => {
+    wasReady.current = isReady
+  }, [isReady])
+  const spring = { type: "spring", stiffness: 400, damping: 34 } as const
+  const posTransition = reduce || justAppeared ? { duration: 0 } : spring
   return (
     <motion.span
       aria-hidden="true"
@@ -145,7 +155,13 @@ export function GlassPill({
           ? { opacity: 1, x: geometry.x, y: geometry.y, width: geometry.width, height: geometry.height }
           : { opacity: 0 }
       }
-      transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 34 }}
+      transition={{
+        opacity: { duration: reduce ? 0 : 0.15 },
+        x: posTransition,
+        y: posTransition,
+        width: posTransition,
+        height: posTransition,
+      }}
     />
   )
 }
