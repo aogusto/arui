@@ -13,6 +13,7 @@ import {
   InputGroup,
   InputGroupAddon,
 } from "@/components/ui/input-group"
+import { useGlassHighlight, GlassPill } from "@/components/ui/glass-highlight"
 import { SearchIcon, CheckIcon } from "lucide-react"
 
 function Command({
@@ -88,17 +89,33 @@ function CommandInput({
 
 function CommandList({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.List>) {
+  // Pattern B: o pill segue o item destacado pelo cmdk ([data-selected="true"],
+  // teclado/hover/digitação). cmdk injeta um nó de medição interno
+  // ([cmdk-list-sizer]) entre este nó e os itens, mas ele não recebe posição
+  // própria (sem `position` inline), então o offsetParent do item e o do pill
+  // (ambos descendentes deste nó) resolvem para este mesmo nó relative.
+  // Por isso measure="offset" (default) contra o próprio CommandList já
+  // alinha os dois sem precisar de resolveContainer. Confirmado ao vivo via
+  // Playwright (arui/.superpowers/sdd/task-11-report.md).
+  const { ref, geometry } = useGlassHighlight({
+    activeSelector: '[data-selected="true"]',
+  })
   return (
     <CommandPrimitive.List
+      ref={ref}
       data-slot="command-list"
       className={cn(
-        "max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
+        "relative max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
         className
       )}
       {...props}
-    />
+    >
+      <GlassPill geometry={geometry} />
+      {children}
+    </CommandPrimitive.List>
   )
 }
 
@@ -153,7 +170,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[selected=true]:bg-foreground/10 data-[selected=true]:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[selected=true]:**:[svg]:text-foreground",
+        "group/command-item relative z-10 flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[selected=true]:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[selected=true]:**:[svg]:text-foreground",
         className
       )}
       {...props}
