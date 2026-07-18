@@ -1,6 +1,15 @@
 import { useState } from "react"
 import { Link, Outlet } from "@tanstack/react-router"
-import { Sheet, SheetContent, SheetTrigger, Button, Kbd, KbdGroup } from "@aogusto/arui"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  Button,
+  Kbd,
+  KbdGroup,
+  useGlassHighlight,
+  GlassPill,
+} from "@aogusto/arui"
 import { Menu, Search } from "lucide-react"
 import { useTheme } from "../lib/useTheme"
 import { ThemeToggle } from "../components/ThemeToggle"
@@ -8,25 +17,31 @@ import { Wordmark } from "../components/icons"
 import { CommandMenu } from "./CommandMenu"
 import { DOCS_REGISTRY, DOCS_CATEGORIES } from "./registry"
 
+// Compartilhada pelos links de Guides e de categoria: mesmo tratamento visual,
+// o fundo do ativo some porque o GlassPill assume esse papel (relative z-10
+// mantém o texto acima do pill, que é absolute dentro do nav).
+const sidebarLinkClass =
+  "relative z-10 block rounded-md px-2 py-1.5 text-label-secondary hover:bg-fill hover:text-label [&.active]:font-medium [&.active]:text-label"
+
 function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
-  const guideLinkClass =
-    "block rounded-md px-2 py-1.5 text-label-secondary hover:bg-fill hover:text-label [&.active]:bg-fill [&.active]:font-medium [&.active]:text-label"
+  const { ref, geometry } = useGlassHighlight({ activeSelector: ".active", measure: "offset" })
   return (
-    <nav className="space-y-6 text-subhead">
+    <nav ref={ref} className="relative space-y-6 text-subhead">
+      <GlassPill geometry={geometry} />
       <div className="space-y-1">
         <p className="px-2 text-caption-1 font-semibold uppercase tracking-wide text-label-tertiary">
           Guides
         </p>
-        <Link to="/docs" onClick={onNavigate} activeOptions={{ exact: true }} className={guideLinkClass}>
+        <Link to="/docs" onClick={onNavigate} activeOptions={{ exact: true }} className={sidebarLinkClass}>
           Getting started
         </Link>
-        <Link to="/docs/design" onClick={onNavigate} className={guideLinkClass}>
+        <Link to="/docs/design" onClick={onNavigate} className={sidebarLinkClass}>
           Design guide
         </Link>
-        <Link to="/docs/theming" onClick={onNavigate} className={guideLinkClass}>
+        <Link to="/docs/theming" onClick={onNavigate} className={sidebarLinkClass}>
           Theming
         </Link>
-        <Link to="/docs/mcp" onClick={onNavigate} className={guideLinkClass}>
+        <Link to="/docs/mcp" onClick={onNavigate} className={sidebarLinkClass}>
           AI agents (MCP)
         </Link>
       </div>
@@ -41,7 +56,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
               to="/docs/components/$slug"
               params={{ slug: e.slug }}
               onClick={onNavigate}
-              className="block rounded-md px-2 py-1.5 text-label-secondary hover:bg-fill hover:text-label [&.active]:bg-fill [&.active]:font-medium [&.active]:text-label"
+              className={sidebarLinkClass}
             >
               {e.name}
             </Link>
