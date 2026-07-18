@@ -132,6 +132,35 @@ listener:
 />
 ```
 
+### 2.6 Glass highlight (the animated pill)
+
+Besides the static surfaces above, arui also has a moving glassmorphism pill: a small
+frosted shape that slides to whichever item is currently active or highlighted, instead
+of the item just flipping color. It reads as one continuous piece of glass gliding
+between positions.
+
+- **Tint:** the pill's fill mixes in `var(--glass-tint, var(--primary))`, so it always
+  picks up the app's accent color (falls back to `--primary` when no `AruiThemeProvider`
+  tint is set, see section 3.5). A themed app gets a pill that matches its buttons and
+  focus ring without extra work.
+- **Motion:** a spring transition, and it collapses to an instant snap under
+  `prefers-reduced-motion: reduce`. Don't assume the spring alone satisfies section 6.3
+  if you build a custom consumer of the primitive, that reduced-motion handling lives in
+  `GlassPill` itself, so reuse it rather than animating the position by hand.
+- **Where it shows up automatically, no prop needed:**
+  - Menu items in `DropdownMenu`, `ContextMenu`, `Menubar`, `Select`, `Command`, and
+    `Combobox`: the keyboard-highlighted or hovered item gets the pill by default.
+    Menubar also shows it behind the open top-level trigger in the bar itself.
+  - `Tabs` `variant="glass"` behind the active trigger (see section 9.4).
+  - `ToggleGroup` `type="single"` behind the pressed item (a `type="multiple"`
+    `ToggleGroup` has no single active item, so the pill stays off there).
+  - `Sidebar` behind the active menu item (including nested submenu items),
+    `NavigationMenu` behind the active link, `Pagination` behind the active page.
+- **Build your own:** the primitive is exported too. `useGlassHighlight({ activeSelector
+  })` returns a callback `ref` and a `geometry` object; render `<GlassPill
+  geometry={geometry} />` (both from `@aogusto/arui`) inside a `relative` container to
+  get the same sliding pill on a custom list or menu.
+
 ---
 
 ## 3. Color system
@@ -233,9 +262,9 @@ stays legible whether the tint is light or dark.
 
 One tint reaches three places: the default `Button` fill and the shared focus ring
 (section 3.2), a `GlassSurface` with `tint="accent"` (section 2.2), and the animated
-glass pill behind the active tab in `Tabs` `variant="glass"` (section 9.4), so a
-themed app's glassmorphism surfaces and its controls read as one system instead of a
-tinted button next to untinted glass.
+glass highlight pill (section 2.6), including behind the active tab in `Tabs`
+`variant="glass"` (section 9.4), so a themed app's glassmorphism surfaces and its
+controls read as one system instead of a tinted button next to untinted glass.
 
 For a CSS-only setup with no React context, set the same three custom properties
 directly in `:root`:
@@ -486,7 +515,9 @@ Sizes: `xs`, `sm`, `default`, `lg`, plus icon-only `icon-xs`/`icon-sm`/`icon`/`i
 - `ButtonGroup` / `buttonGroupVariants` for a connected row of buttons (segmented
   action clusters) instead of hand-spacing individual `Button`s.
 - `Toggle` / `toggleVariants` and `ToggleGroup` / `ToggleGroupItem` for pressed/unpressed
-  states (formatting toolbars, filter chips), not a re-skinned `Button`.
+  states (formatting toolbars, filter chips), not a re-skinned `Button`. A single-select
+  `ToggleGroup` (`type="single"`) shows the pressed item with the glass highlight pill
+  by default (section 2.6).
 
 ### 9.2 Forms and inputs
 
@@ -505,6 +536,8 @@ picking.
   `aria-describedby`/`aria-invalid` automatically.
 - react-hook-form is a peer dependency; reach for the `Form*` family only when a form
   actually uses RHF, otherwise plain `Field` + controlled state is enough.
+- `Select` and `Combobox` both highlight the keyboard-focused/hovered option with the
+  glass highlight pill by default (section 2.6), no prop needed.
 
 ### 9.3 Overlays
 
@@ -525,16 +558,22 @@ action menus (trigger click, right-click, and a persistent menu bar, respectivel
   `bg-background` or `bg-card` so form fields stay legible.
 - Include a scrim/backdrop for anything modal (Radix + arui's `Dialog`/`Sheet`/
   `Drawer` already render one, don't strip it).
+- `DropdownMenu`, `ContextMenu`, `Menubar`, and `Command` all highlight the
+  keyboard-focused/hovered item with the glass highlight pill by default
+  (section 2.6), no prop needed.
 
 ### 9.4 Navigation
 
 `Tabs` family (`tabsListVariants` supports a segmented look, plus a `glass` variant with
-an animated tinted pill behind the active tab, see section 3.5) for switching between
-sibling views in place. `NavigationMenu` family for a top-level marketing/app nav with
-flyouts. `Breadcrumb` family for hierarchical location. `Pagination` family for paged
-lists/tables. `Sidebar` family (`Sidebar`, `SidebarProvider`, `SidebarMenu*`,
-`useSidebar`, etc.) for a full app shell side nav, it already carries its own
-`bg-sidebar`/`text-sidebar-foreground` token set distinct from the main content tokens.
+an animated tinted pill behind the active tab, see sections 2.6 and 3.5) for switching
+between sibling views in place. `NavigationMenu` family for a top-level marketing/app
+nav with flyouts, its active link gets the glass highlight pill by default (section
+2.6). `Breadcrumb` family for hierarchical location. `Pagination` family for paged
+lists/tables, its active page gets the glass highlight pill by default. `Sidebar`
+family (`Sidebar`, `SidebarProvider`, `SidebarMenu*`, `useSidebar`, etc.) for a full app
+shell side nav, it already carries its own `bg-sidebar`/`text-sidebar-foreground` token
+set distinct from the main content tokens, and its active item gets the glass
+highlight pill by default.
 
 ### 9.5 Data and display
 

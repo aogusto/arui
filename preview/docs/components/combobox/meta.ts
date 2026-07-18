@@ -5,7 +5,7 @@ export const meta: { slug: string; name: string; category: DocCategory; descript
   slug: "combobox",
   name: "Combobox",
   category: "Forms & Inputs",
-  description: "A searchable select built on @base-ui/react's Combobox, combining a text input with a filtered list of options. Supports single or multiple selection, grouped items, and a chips layout for picking more than one value.",
+  description: "A searchable select built on @base-ui/react's Combobox, combining a text input with a filtered list of options. Supports single or multiple selection, grouped items, and a chips layout for picking more than one value. The highlighted option uses an animated glass pill by default.",
   imports: [
     "Combobox",
     "ComboboxInput",

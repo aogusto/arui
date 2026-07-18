@@ -5,7 +5,7 @@ export const meta: { slug: string; name: string; category: DocCategory; descript
   slug: "dropdown-menu",
   name: "Dropdown Menu",
   category: "Overlays",
-  description: "A menu of actions or options revealed from a trigger button and positioned relative to it. Composed of items, checkboxes, radio groups, labels, separators, keyboard shortcuts, and nested submenus, all inside a glassmorphism surface.",
+  description: "A menu of actions or options revealed from a trigger button and positioned relative to it. Composed of items, checkboxes, radio groups, labels, separators, keyboard shortcuts, and nested submenus, all inside a glassmorphism surface. The highlighted item uses an animated glass pill by default.",
   imports: [
     "DropdownMenu",
     "DropdownMenuTrigger",

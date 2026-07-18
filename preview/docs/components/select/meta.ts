@@ -5,7 +5,7 @@ export const meta: { slug: string; name: string; category: DocCategory; descript
   slug: "select",
   name: "Select",
   category: "Forms & Inputs",
-  description: "A composable dropdown for choosing a single option from a list, built on Radix UI's Select primitive. Supports placeholders, grouped and labeled options with separators, and a compact trigger size.",
+  description: "A composable dropdown for choosing a single option from a list, built on Radix UI's Select primitive. Supports placeholders, grouped and labeled options with separators, and a compact trigger size. The highlighted option uses an animated glass pill by default.",
   imports: [
     "Select",
     "SelectContent",

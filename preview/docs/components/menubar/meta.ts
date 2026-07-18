@@ -257,7 +257,7 @@ export const meta: { slug: string; name: string; category: DocCategory; descript
   slug: "menubar",
   name: "Menubar",
   category: "Overlays",
-  description: "A horizontal bar of dropdown menus for the primary actions of a desktop-style app, such as File, Edit, and View. Composed of items, checkboxes, radio groups, labels, separators, keyboard shortcuts, and nested submenus, all on a glassmorphism surface.",
+  description: "A horizontal bar of dropdown menus for the primary actions of a desktop-style app, such as File, Edit, and View. Composed of items, checkboxes, radio groups, labels, separators, keyboard shortcuts, and nested submenus, all on a glassmorphism surface. The highlighted item and the open top-level trigger use an animated glass pill by default.",
   imports: [
     "Menubar",
     "MenubarMenu",

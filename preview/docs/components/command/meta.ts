@@ -5,7 +5,7 @@ export const meta: { slug: string; name: string; category: DocCategory; descript
   slug: "command",
   name: "Command",
   category: "Overlays",
-  description: "A composable, filterable list for building command palettes, quick-action menus, and searchable pickers. Combine Command, CommandInput, and CommandItem to search over a list of actions, with optional groups, shortcuts, and a built-in empty state.",
+  description: "A composable, filterable list for building command palettes, quick-action menus, and searchable pickers. Combine Command, CommandInput, and CommandItem to search over a list of actions, with optional groups, shortcuts, and a built-in empty state. The highlighted item uses an animated glass pill by default.",
   imports: ["Command", "CommandInput", "CommandList", "CommandEmpty", "CommandGroup", "CommandItem", "CommandShortcut", "CommandSeparator"],
 }
 

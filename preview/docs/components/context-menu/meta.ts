@@ -5,7 +5,7 @@ export const meta: { slug: string; name: string; category: DocCategory; descript
   slug: "context-menu",
   name: "Context Menu",
   category: "Overlays",
-  description: "A menu that appears at the pointer position when right-clicking a trigger area, with items, checkboxes, radio groups, and submenus, all on a glassmorphism surface.",
+  description: "A menu that appears at the pointer position when right-clicking a trigger area, with items, checkboxes, radio groups, and submenus, all on a glassmorphism surface. The highlighted item uses an animated glass pill by default.",
   imports: [
     "ContextMenu",
     "ContextMenuTrigger",
