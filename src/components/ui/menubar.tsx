@@ -14,7 +14,7 @@ function Menubar({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Root>) {
   // Pattern B, mas na barra do topo: o pill segue o MenubarTrigger destacado
-  // ([data-highlighted], setado pelo Radix via foco real do DOM — não é
+  // ([data-highlighted], setado pelo Radix via foco real do DOM; não é
   // Presence-gated como um Content, mas o callback ref funciona igual).
   // Superfície independente dos Contents dos menus (cada um tem o próprio pill).
   const { ref: pillRef, geometry } = useGlassHighlight({
@@ -87,9 +87,9 @@ function MenubarContent({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content>) {
   // Pattern B: o pill segue o item destacado (Radix marca com [data-highlighted]
-  // em runtime, hover ou teclado) — uma instância por superfície independente.
+  // em runtime, hover ou teclado). Uma instância por superfície independente.
   // Content é gated por Presence (Radix): o nó real só existe algum tempo
-  // depois do primeiro commit. O callback ref do hook resolve isso na fonte —
+  // depois do primeiro commit. O callback ref do hook resolve isso na fonte:
   // quando o Radix monta o Content, o ref dispara, o efeito re-roda e mede.
   const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: "[data-highlighted]",
@@ -281,7 +281,7 @@ function MenubarSubContent({
 }: React.ComponentProps<typeof MenubarPrimitive.SubContent>) {
   // Mesmo fix de timing do Content acima (SubContent também é Presence-gated),
   // resolvido na fonte pelo callback ref do hook. Superfície independente do
-  // Content pai — pill próprio, nunca compartilhado.
+  // Content pai, com pill próprio, nunca compartilhado.
   const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: "[data-highlighted]",
   })

@@ -143,10 +143,10 @@ between positions.
   picks up the app's accent color (falls back to `--primary` when no `AruiThemeProvider`
   tint is set, see section 3.5). A themed app gets a pill that matches its buttons and
   focus ring without extra work.
-- **Motion:** a spring transition, and it collapses to an instant snap under
-  `prefers-reduced-motion: reduce`. Don't assume the spring alone satisfies section 6.3
-  if you build a custom consumer of the primitive, that reduced-motion handling lives in
-  `GlassPill` itself, so reuse it rather than animating the position by hand.
+- **Motion:** a spring transition that collapses to an instant snap under
+  `prefers-reduced-motion: reduce` (section 6.3). The reduced-motion handling lives inside
+  `GlassPill` itself. If you build a custom consumer of the primitive, reuse `GlassPill`
+  rather than animating the position by hand, so you inherit that behavior for free.
 - **Where it shows up automatically, no prop needed:**
   - Menu items in `DropdownMenu`, `ContextMenu`, `Menubar`, `Select`, `Command`, and
     `Combobox`: the keyboard-highlighted or hovered item gets the pill by default.

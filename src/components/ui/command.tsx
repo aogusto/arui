@@ -98,8 +98,7 @@ function CommandList({
   // própria (sem `position` inline), então o offsetParent do item e o do pill
   // (ambos descendentes deste nó) resolvem para este mesmo nó relative.
   // Por isso measure="offset" (default) contra o próprio CommandList já
-  // alinha os dois sem precisar de resolveContainer. Confirmado ao vivo via
-  // Playwright (arui/.superpowers/sdd/task-11-report.md).
+  // alinha os dois sem precisar de resolveContainer.
   const { ref, geometry } = useGlassHighlight({
     activeSelector: '[data-selected="true"]',
   })

@@ -99,7 +99,7 @@ function NavigationMenuContent({
   return (
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
-      // NOTE: o modo viewport=false não usa glass.regular — a constante não é
+      // NOTE: o modo viewport=false não usa glass.regular porque a constante não é
       // prefixável pela variante group-data-[viewport=false]. O modo padrão
       // (viewport) é vidro via NavigationMenuViewport. Ver spec 2026-05-21.
       className={cn(

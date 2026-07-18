@@ -66,9 +66,9 @@ function ContextMenuContent({
   side?: "top" | "right" | "bottom" | "left"
 }) {
   // Pattern B: o pill segue o item destacado (Radix marca com [data-highlighted]
-  // em runtime, hover ou teclado) — uma instância por superfície independente.
+  // em runtime, hover ou teclado). Uma instância por superfície independente.
   // Content é gated por Presence (Radix): o nó real só existe algum tempo
-  // depois do primeiro commit. O callback ref do hook resolve isso na fonte —
+  // depois do primeiro commit. O callback ref do hook resolve isso na fonte:
   // quando o Radix monta o Content, o ref dispara, o efeito re-roda e mede.
   const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: "[data-highlighted]",
@@ -142,7 +142,7 @@ function ContextMenuSubContent({
 }: React.ComponentProps<typeof ContextMenuPrimitive.SubContent>) {
   // Mesmo fix de timing do Content acima (SubContent também é Presence-gated),
   // resolvido na fonte pelo callback ref do hook. Superfície independente do
-  // Content pai — pill próprio, nunca compartilhado.
+  // Content pai, com pill próprio, nunca compartilhado.
   const { ref: pillRef, geometry } = useGlassHighlight({
     activeSelector: "[data-highlighted]",
   })
