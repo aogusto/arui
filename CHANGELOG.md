@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+### Fixed
+- NavigationMenu: hovering the active link no longer paints an opaque background over the glass highlight pill. The hover/focus background on NavigationMenuLink and navigationMenuTriggerStyle is now scoped to non-active links (not-data-active), so the active link keeps its pill; non-active links keep their hover feedback.
+
 ## 0.2.0
 
 ### Added
