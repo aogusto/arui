@@ -13,6 +13,7 @@
 - framer-motion is now a dependency (used by the glass pill).
 
 ### Fixed
+- Slider is no longer invisible, and Toggle and multi-select ToggleGroup now show a clear glass fill on the selected item instead of a near-white background that vanished on light surfaces. The orientation styles keyed off data-horizontal/data-vertical, which the components never set (they use data-orientation), so the Slider track collapsed to zero height; hovering a selected toggle also no longer covers the glass. This bug predates 0.2.0.
 - Switch, Checkbox, and RadioGroup now render their checked/on state, and Dialog, Sheet, AlertDialog, Popover, Tooltip, HoverCard, and Accordion now animate open and closed. These radix components keyed their state styles off presence variants (data-checked, data-open, ...) that radix never sets; they now use data-[state=...], which is what radix emits. The Switch and Checkbox were invisible in light mode before this. This bug predates 0.2.0.
 - Submenus in DropdownMenu, ContextMenu, and Menubar are no longer clipped or unclickable. Their SubContent is now portaled, so the parent menu's glass backdrop and overflow no longer trap the floating submenu. This bug predates 0.2.0 (it shipped in 0.1.0) and only affected these glass menus.
 - Sidebar highlight now applies only to the active item. It previously keyed off a presence selector while React always renders data-active="false", so every item looked active.
