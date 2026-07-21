@@ -136,6 +136,14 @@ export function GlassPill({
 }) {
   const reduce = useReducedMotion()
   const isReady = geometry != null
+  // Congela a última geometria conhecida. Assim, quando o highlight some (ex.:
+  // mouse sai do menu, ou o menu fecha), o pill some FIXO no lugar via opacity,
+  // em vez de voar pro canto (x/y -> 0) e colapsar num quadradinho (width/height
+  // -> auto). Sem isso, sair de um menu vertical arrastava o pill "pra cima" e
+  // fechar um menubar horizontal jogava ele "pra esquerda" virando quadrado.
+  const lastGeometry = React.useRef<PillGeometry | null>(null)
+  if (geometry) lastGeometry.current = geometry
+  const g = geometry ?? lastGeometry.current
   // Primeiro reveal (escondido para visível, ex.: menu recém-aberto ganha o
   // primeiro item destacado): o pill surge no lugar via opacity, sem deslizar
   // do canto (0, 0). O movimento item a item depois disso usa a spring.
@@ -154,11 +162,11 @@ export function GlassPill({
         "pointer-events-none absolute left-0 top-0 z-0 border border-white/40 dark:border-white/15",
         className
       )}
-      style={{ ...GLASS_PILL_STYLE, borderRadius: geometry?.radius || undefined, ...style }}
+      style={{ ...GLASS_PILL_STYLE, borderRadius: g?.radius || undefined, ...style }}
       initial={false}
       animate={
-        isReady
-          ? { opacity: 1, x: geometry.x, y: geometry.y, width: geometry.width, height: geometry.height }
+        g
+          ? { opacity: isReady ? 1 : 0, x: g.x, y: g.y, width: g.width, height: g.height }
           : { opacity: 0 }
       }
       transition={{
