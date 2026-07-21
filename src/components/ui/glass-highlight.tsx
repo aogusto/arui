@@ -15,6 +15,12 @@ export const GLASS_PILL_STYLE: React.CSSProperties = {
     "inset 0 1px 0 0 rgb(255 255 255 / 0.55), inset 0 0 0 0.5px rgb(255 255 255 / 0.15), 0 2px 8px -3px rgb(0 0 0 / 0.28)",
 }
 
+// Estado "on/selected" ESTÁTICO (multi ToggleGroup, Toggle standalone): o gêmeo
+// não-animado do GlassPill. Mesmo vidro (glass-fill), aplicado direto no item.
+// (single-select ToggleGroup NÃO usa isso: lá o pill deslizante já faz o vidro.)
+export const GLASS_ON_ITEM =
+  "data-[state=on]:glass-fill data-[state=on]:text-foreground data-[state=on]:border-white/40 dark:data-[state=on]:border-white/15"
+
 export interface PillGeometry {
   x: number
   y: number

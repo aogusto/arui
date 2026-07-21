@@ -16,6 +16,12 @@
   padding-right: env(safe-area-inset-right);
 }
 
+@utility glass-fill {
+  /* Vidro canônico do estado selecionado. Manter em sincronia com GLASS_PILL_STYLE em glass-highlight.tsx (o pill deslizante usa a mesma fórmula). */
+  background: color-mix(in oklch, var(--glass-tint, var(--primary)) 18%, rgb(var(--glass-regular) / 0.82));
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.55), inset 0 0 0 0.5px rgb(255 255 255 / 0.15), 0 2px 8px -3px rgb(0 0 0 / 0.28);
+}
+
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Inter Variable', sans-serif;
