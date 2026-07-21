@@ -4,3 +4,8 @@ showcase-dist
 *.local
 .DS_Store
 *.tsbuildinfo
+
+# Screenshots de verificação ao vivo (Playwright) — nunca versionar
+/*.png
+/*-snapshot.md
+.playwright-mcp/
