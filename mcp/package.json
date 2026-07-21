@@ -1,15 +1,26 @@
 {
   "name": "@aogusto/arui-mcp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MCP server that teaches AI agents how to use the arui component library (components, props, examples, and the Apple HIG + glassmorphism design guide).",
   "license": "MIT",
   "type": "module",
-  "bin": { "arui-mcp": "./index.js" },
-  "files": ["index.js", "manifest.json", "knowledge", "README.md"],
+  "bin": {
+    "arui-mcp": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "manifest.json",
+    "knowledge",
+    "README.md"
+  ],
   "scripts": {
     "start": "node index.js",
     "prepack": "cd .. && npm run build:manifest"
   },
-  "dependencies": { "@modelcontextprotocol/sdk": "^1.0.4" },
-  "engines": { "node": ">=18" }
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }
