@@ -13,12 +13,14 @@ function Menubar({
   children,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Root>) {
-  // Pattern B, mas na barra do topo: o pill segue o MenubarTrigger destacado
-  // ([data-highlighted], setado pelo Radix via foco real do DOM; não é
-  // Presence-gated como um Content, mas o callback ref funciona igual).
+  // Pattern B na barra do topo: o pill segue o MenubarTrigger cujo menu está
+  // ABERTO (data-state=open), que é o estado significativo aqui. O Radix só
+  // marca data-highlighted no trigger com foco real do DOM, e ao abrir um menu
+  // o foco vai pro Content, então data-highlighted quase nunca fica no trigger;
+  // data-state=open é o que desliza o pill entre os menus ao trocar.
   // Superfície independente dos Contents dos menus (cada um tem o próprio pill).
   const { ref: pillRef, geometry } = useGlassHighlight({
-    activeSelector: "[data-highlighted]",
+    activeSelector: '[data-state="open"]',
   })
   return (
     <MenubarPrimitive.Root
@@ -70,7 +72,7 @@ function MenubarTrigger({
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        "relative flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none hover:bg-muted aria-expanded:bg-muted",
+        "relative flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none data-[state=closed]:hover:bg-muted data-[state=open]:text-foreground",
         className
       )}
       {...props}
